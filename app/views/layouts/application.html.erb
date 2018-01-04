@@ -1,14 +1,60 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Renewal</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
+    <!-- Vendor CSS -->
+    <link href="/template/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="/template/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/template/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
+    <link href="/template/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="/template/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link href="/template/css/app.min.1.css" rel="stylesheet">
+    <link href="/template/css/app.min.2.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<%= render partial: '/layouts/partials/delivery' %>
+<%= render partial: '/layouts/partials/navbar' %>
+
+<section id="main" data-layout="layout-1">
+
+    <div id="carousel-wrapper">
+        <%= render partial: '/layouts/partials/carousel' %>
+    </div>
+
+    <%= render partial: '/layouts/partials/sidebar' %>
+
     <%= yield %>
-  </body>
+</section>
+
+<%= render partial: '/layouts/partials/footer' %>
+
+<!-- Page Loader -->
+<%= render partial: '/layouts/partials/page_loader' %>
+
+<!-- Older IE warning message -->
+<%= render partial: '/layouts/partials/ie_warning' %>
+
+<%= render partial: '/layouts/partials/javascript_libraries' %>
+</body>
 </html>
+
+
+    
+
+
+    
+

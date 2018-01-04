@@ -1,0 +1,41 @@
+#contents-delivery{
+    position: fixed;
+    width: 100%;
+    line-height: 60px;
+    background: #f83938;
+    padding-left: 60px;
+    padding-right: 60px;
+    z-index: 16;
+
+    p{
+        float: left;
+        padding: 22px 0;
+        color: #121218;
+        font-size: 16px;
+        line-height: 100%;
+        margin: 0;
+    }
+
+    a{
+        display: inline-block;
+        float: right;
+        margin: 13px 0;
+        margin-left: 8px;
+        padding: 10px 17px;
+        background: black;
+        color: white;
+        line-height: 100%;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+
+body{
+    #header,
+    #header-2{
+        top: 60px;
+    }
+    #main{
+        padding-top: 60px;
+    }
+}

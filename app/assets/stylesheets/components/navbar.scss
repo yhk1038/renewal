@@ -1,0 +1,17 @@
+body{
+    #header,
+    #header-2{
+        padding-left: 60px;
+        padding-right: 60px;
+
+        &.transparent{
+            background-color: transparent;
+            box-shadow: none;
+
+            .logo a,
+            .top-menu > li > a{
+                text-shadow: 1px 2px 3px #b3b3b3;
+            }
+        }
+    }
+}
