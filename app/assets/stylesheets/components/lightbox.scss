@@ -1,0 +1,9 @@
+.lightbox.myCards{
+    .lightbox-item{
+        &.thumbnail{
+            &:before{
+                display: none;
+            }
+        }
+    }
+}

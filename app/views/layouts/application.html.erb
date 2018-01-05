@@ -9,13 +9,13 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- Vendor CSS -->
     <link href="/template/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
     <link href="/template/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
     <link href="/template/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
     <link href="/template/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="/template/vendors/bower_components/lightgallery/light-gallery/css/lightGallery.css" rel="stylesheet">
     <link href="/template/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
     
     <!-- CSS -->
@@ -49,12 +49,7 @@
 <%= render partial: '/layouts/partials/ie_warning' %>
 
 <%= render partial: '/layouts/partials/javascript_libraries' %>
+<%= javascript_include_tag 'application' %>
+
 </body>
 </html>
-
-
-    
-
-
-    
-

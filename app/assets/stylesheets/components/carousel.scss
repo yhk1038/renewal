@@ -1,6 +1,9 @@
 $body_background_color: #edecec;
 $carousel_height: 450px;
 
+/*
+ * Related in 'carousel fade'
+ */
 .carousel-fade {
     .carousel-inner {
         .item {
@@ -33,27 +36,9 @@ $carousel_height: 450px;
     }
 }
 
-body{
-    .carousel{
-        .carousel-indicators,
-        .carousel-caption{
-            background: transparent;
-        }
-
-        .carousel-inner > .item > img{
-            min-width: 100%;
-            min-height: 450px;
-
-        }
-
-        .carousel-caption{
-
-        }
-    }
-
-}
-
-//
+/*
+ * Related in 'fixed carousel'
+ */
 body{
     #carousel-wrapper{
         padding-top: $carousel_height;
@@ -66,6 +51,7 @@ body{
                 top: 60px;
                 height: $carousel_height;
                 z-index: 1;
+                background-image: none;
             }
 
             .carousel-indicators{
@@ -78,6 +64,14 @@ body{
             .carousel-inner{
                 top: 60px;
             }
+
+            .cover_bg,
+            .carousel-caption{
+                background: $body_background_color;
+                opacity: 0;
+                height: 100%;
+                z-index: 1;
+            }
         }
     }
 
@@ -85,9 +79,29 @@ body{
         background: $body_background_color;
         position: relative;
         z-index: 2;
+        padding-top: 60px;
     }
 
     footer{
         background: $body_background_color;
+        z-index: 2;
+    }
+}
+
+body{
+    .carousel{
+        .carousel-indicators,
+        .carousel-caption{
+            background: transparent;
+        }
+
+        .carousel-inner > .item > img{
+            min-width: 100%;
+            min-height: 450px;
+        }
+
+        .carousel-caption{
+
+        }
     }
 }

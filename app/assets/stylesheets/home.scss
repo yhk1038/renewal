@@ -1,3 +1,34 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#main .block-header{ // Each section title
+    padding: 0;
+
+    & > h2{
+        font-size: 22px;
+        color: #3b3b3b;
+        font-weight: 900;
+    }
+
+    .actions{
+        top: auto;
+        bottom: 0;
+        right: 0;
+
+        & > li > a,
+        & > a{
+            width: initial;
+
+            &:before{
+                display: none;
+            }
+        }
+    }
+
+}
+
+#main > #content > .container{
+    padding-bottom: 60px;
+}

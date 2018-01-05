@@ -1,8 +1,20 @@
+body #header,
+.logo a,
+.top-menu > li > a{
+    transition: all 250ms ease;
+}
+
 body{
     #header,
     #header-2{
         padding-left: 60px;
         padding-right: 60px;
+        background-color: #FFFFFF;
+
+        .logo a,
+        .top-menu > li > a{
+            color: #4C4C4C;
+        }
 
         &.transparent{
             background-color: transparent;
@@ -10,6 +22,7 @@ body{
 
             .logo a,
             .top-menu > li > a{
+                color: #FFFFFF;
                 text-shadow: 1px 2px 3px #b3b3b3;
             }
         }
