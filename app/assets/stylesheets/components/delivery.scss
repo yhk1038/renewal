@@ -1,3 +1,5 @@
+@import "variables";
+
 #contents-delivery{
     position: fixed;
     width: 100%;
@@ -33,9 +35,9 @@
 body{
     #header,
     #header-2{
-        top: 60px;
+        top: $navbar-height;
     }
     #main{
-        padding-top: 60px;
+        padding-top: $navbar-height;
     }
 }

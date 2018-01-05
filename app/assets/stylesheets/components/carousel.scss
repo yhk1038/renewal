@@ -1,5 +1,4 @@
-$body_background_color: #edecec;
-$carousel_height: 450px;
+@import "variables";
 
 /*
  * Related in 'carousel fade'
@@ -48,7 +47,7 @@ body{
 
             .carousel-control{
                 position: fixed;
-                top: 60px;
+                top: $navbar-height;
                 height: $carousel_height;
                 z-index: 1;
                 background-image: none;
@@ -83,7 +82,7 @@ body{
     }
 
     footer{
-        background: $body_background_color;
+        background: $footer-background_color;
         z-index: 2;
     }
 }
