@@ -11,7 +11,7 @@ $(document).ready(function () {
 
         if (opacity >= 0){
             $('.carousel-caption').css('opacity', opacity);
-            $('.carousel-inner').css('top', 60 - liftup);
+            $('.carousel-inner').css('top', 0 - liftup);
         }
     });
 });

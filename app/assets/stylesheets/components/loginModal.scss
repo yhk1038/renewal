@@ -1,0 +1,63 @@
+
+body.modal-open #loginModal{
+
+
+    .modal-body{
+        & > div{ padding: 50px 0 }
+    }
+
+    .logoBox{
+        width: 100%;
+        text-align: center;
+
+
+        img{
+            width: 60%;
+        }
+    }
+
+    .buttonBox{
+        padding-left: 13% !important;
+        padding-right: 13% !important;
+
+        .btn-login{
+            width: 100%;
+            margin-bottom: 15px;
+            line-height: 45px;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            padding-left: 10%;
+
+            &.btn-kakao{
+                background-color: #f9e81e;
+                color: #3b1f1f;
+            }
+            &.btn-facebook{
+                background-color: #3b589e;
+                color: #FFFFFF;
+            }
+
+            span:not(.icon){
+                padding-left: 20%;
+            }
+
+            .icon{
+                padding-left: 24px;
+                background-size: cover;
+                position: relative;
+
+                &.icon-kk{
+                    background-image: url(/img/login_kakao_icon.png);
+                }
+                &.icon-fb{
+                    background-image: url(/img/login_facebook_icon.gif);
+                    padding-left: 38px;
+                    padding-top: 14px;
+                    left: -7px;
+                    top: 7px;
+                }
+            }
+        }
+    }
+}
