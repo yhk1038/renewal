@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
     <title>Renewal</title>
     <%= csrf_meta_tags %>
@@ -31,6 +31,9 @@
 
 <section id="main" data-layout="layout-1">
 
+    <!--<p class="notice"><%= notice %></p>-->
+    <!--<p class="alert"><%= alert %></p>-->
+
     <div id="carousel-wrapper">
         <%= render partial: '/layouts/partials/carousel' %>
     </div>
@@ -46,7 +49,9 @@
 <%= render partial: '/layouts/partials/page_loader' %>
 
 <!-- Modal -->
-<%= render partial: '/layouts/partials/login_modal' %>
+<% unless user_signed_in? %>
+    <%= render partial: '/layouts/partials/login_modal' %>
+<% end %>
 
 <!-- Older IE warning message -->
 <%= render partial: '/layouts/partials/ie_warning' %>
