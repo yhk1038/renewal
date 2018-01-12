@@ -1,20 +1,19 @@
-# frozen_string_literal: true
-
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     def self.provides_callback_for(provider)
         class_eval %Q{
-      def #{provider}
-        @user = User.find_for_oauth(request.env["omniauth.auth"], current_user)
+            def #{provider}
+                env = request.env
+                @user = User.find_for_oauth(env["omniauth.auth"], current_user)
 
-        if @user.persisted?
-          sign_in_and_redirect @user, event: :authentication
-        else
-          session["devise.#{provider}_data"] = request.env["omniauth.auth"]
-          redirect_to new_user_registration_url
-        end
-      end
-    }
+                if @user.persisted?
+                    sign_in_and_redirect @user, event: :authentication
+                else
+                    session["devise.#{provider}_data"] = env["omniauth.auth"]
+                    redirect_to new_user_registration_url
+                end
+            end
+        }
     end
     [:kakao, :facebook].each do |provider|
         provides_callback_for provider
@@ -40,13 +39,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     # GET|POST /resource/auth/twitter
     # def passthru
-    #   super
+    #     super
     # end
 
     # GET|POST /users/auth/twitter/callback
-    # def failure
-    #   super
-    # end
+    def failure
+        @auth = request.env["omniauth.auth"]
+        raise :test
+        super
+    end
 
     # protected
 

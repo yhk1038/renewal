@@ -8,12 +8,16 @@ end
 gem 'sweetalert2'
 gem 'rails-sweetalert2-confirm'
 
+gem 'faraday'
+gem 'rest-client'
+
 # 회원인증 및 권한설정을 위한 젬
 gem 'devise'     # 회원가입 및 인증
 gem 'rolify'     # role 관리
 gem 'authority'  # 권한설정
+gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'omniauth-kakao'
+gem 'omniauth-kakao', :git => 'git://github.com/hcn1519/omniauth-kakao'
 
 # 페이지 뷰를 깔끔하게 보이도록 하기 위해서 아래의 두 젬을 추가로 설치한다.
 gem 'simple_form'
@@ -24,7 +28,7 @@ gem 'letter_opener', group: :development
 gem 'pry'
 gem 'awesome_print'
 gem 'seed_dump'
-
+gem 'faker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
