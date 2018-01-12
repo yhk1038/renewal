@@ -1,4 +1,4 @@
-@import "variables";
+@import "variables/*";
 
 /*
  * Related in 'carousel fade'
@@ -35,12 +35,48 @@
     }
 }
 
+
+/*
+ * Related in 'paged carousel'
+ */
+body{
+    // default sizing
+    #main[data-template='default']{
+        #carousel-wrapper{
+            padding-top: $carousel_height;
+
+            .carousel{
+                .carousel-control{
+                    height: $carousel_height;
+                }
+                .carousel-indicators{
+                    top: calc(60px + 450px - 24px);
+                }
+            }
+        }
+
+    }
+
+    // small sizing
+    #main[data-template='mypage']{
+        #carousel-wrapper{
+            padding-top: $carousel_height_sm;
+
+            .carousel .carousel-inner > .item > img{
+                position: relative;
+                top: -75px;
+            }
+        }
+    }
+}
+
+
 /*
  * Related in 'fixed carousel'
  */
 body{
     #carousel-wrapper{
-        padding-top: $carousel_height;
+        //padding-top: $carousel_height;
 
         .carousel{
             position: relative;
@@ -48,7 +84,7 @@ body{
             .carousel-control{
                 position: fixed;
                 top: $navbar-height;
-                height: $carousel_height;
+                //height: $carousel_height;
                 z-index: 1;
                 background-image: none;
             }
@@ -56,7 +92,7 @@ body{
             .carousel-indicators{
                 position: fixed;
                 bottom: initial;
-                top: calc(60px + 450px - 24px);
+                //top: calc(60px + 450px - 24px);
                 z-index: 1;
             }
 

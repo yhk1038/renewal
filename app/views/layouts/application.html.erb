@@ -29,7 +29,7 @@
 <%= render partial: '/layouts/partials/delivery' %>
 <%= render partial: '/layouts/partials/navbar' %>
 
-<section id="main" data-layout="layout-1">
+<section id="main" data-layout="layout-1" data-template="default">
 
     <!--<p class="notice"><%= notice %></p>-->
     <!--<p class="alert"><%= alert %></p>-->
@@ -40,7 +40,9 @@
 
     <%= render partial: '/layouts/partials/sidebar' %>
 
-    <%= yield %>
+    <section id="content">
+        <%= yield %>
+    </section>
 </section>
 
 <%= render partial: '/layouts/partials/footer' %>

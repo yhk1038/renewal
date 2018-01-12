@@ -1,3 +1,5 @@
+@import "variables/*";
+
 body #header,
 .logo a,
 .top-menu > li:after,
@@ -15,6 +17,21 @@ body{
         .logo a,
         .top-menu > li > a{
             color: #4C4C4C;
+        }
+
+        .top-menu .pf_img{
+            width: 34px;
+            height: 34px;
+            border-radius: 20px;
+            border: 1px solid #fff;
+            /* box-shadow: 1px 2px 3px #999; */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            float: right;
+            margin-left: 10px;
+            position: relative;
+            top: 1px;
         }
 
         .top-menu > .link{
@@ -49,6 +66,12 @@ body{
                 bottom: -18px;
                 height: 0;
                 background: #f83938;
+            }
+
+            &:hover{
+                &:not(.no-hover):after{
+                    height: 4px;
+                }
             }
         }
 
