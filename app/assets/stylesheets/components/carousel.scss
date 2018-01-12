@@ -58,7 +58,8 @@ body{
     }
 
     // small sizing
-    #main[data-template='mypage']{
+    #main[data-template='mypage'],
+    #main[data-template='themes']{
         #carousel-wrapper{
             padding-top: $carousel_height_sm;
 

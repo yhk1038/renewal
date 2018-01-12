@@ -31,14 +31,11 @@
 
 <section id="main" data-layout="layout-1" data-template="mypage">
 
-    <!--
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    -->
+    <%= render partial: '/layouts/partials/flash' %>
+
     <div id="carousel-wrapper">
         <%= render partial: '/layouts/partials/mypage_header' %>
     </div>
-
 
     <section id="content">
         <%= yield %>
