@@ -3,4 +3,8 @@ class ApplicationController < ActionController::Base
 
     $appname = Rails.application.class.parent_name
 
+    def is_login?
+        redirect_to root_path unless user_signed_in? || current_user.is_valid?
+        true
+    end
 end

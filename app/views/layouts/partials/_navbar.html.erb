@@ -11,10 +11,14 @@
         <li class="p-l-15">
             <ul class="top-menu">
                 <li class="link">
-                    <a href="#"><span class="tm-text">테마</span></a>
+                    <%= link_to themes_path do %>
+                        <span class="tm-text">테마</span>
+                    <% end %>
                 </li>
                 <li class="link">
-                    <a href="#"><span class="tm-text">추천</span></a>
+                    <a href="#">
+                        <span class="tm-text">추천</span>
+                    </a>
                 </li>
             </ul>
         </li>
@@ -22,17 +26,26 @@
         <li class="pull-right">
             <ul class="top-menu">
 
-                <% unless user_signed_in? %>
-                <li class="link no-hover">
-                    <a href="" data-toggle="modal" data-target="#loginModal"><span class="tm-text">로그인</span></a>
-                </li>
+                <% if user_signed_in? %>
+                    <li class="link">
+                        <a href="<%= my_page_path %>">
+                            <span class="tm-text"><%= current_user.name %></span>
+                            <div class="pf_img" style="background-image: url(<%= current_user.profile_img %>)"></div>
+                        </a>
+                    </li>
+                <% else %>
+                    <li class="link no-hover">
+                        <%= link_to '', data: {toggle: 'modal', target: '#loginModal'} do %>
+                            <span class="tm-text">로그인</span>
+                        <% end %>
+                    </li>
                 <% end %>
 
-                <li id="top-search">
+                <li id="top-search" class="no-hover">
                     <a href="" onclick="alert('It\'ll go to search page')"><i class="tm-icon zmdi zmdi-search"></i></a>
                 </li>
 
-                <li class="dropdown">
+                <li class="dropdown no-hover">
                     <a data-toggle="dropdown" href=""><i class="tm-icon zmdi zmdi-more-vert"></i></a>
                     <ul class="dropdown-menu dm-icon pull-right">
                         <li>

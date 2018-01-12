@@ -5,6 +5,21 @@ class User < ApplicationRecord
            :recoverable, :rememberable, :trackable, :validatable,
            :omniauthable, omniauth_providers: [:kakao, :facebook]
 
+    has_many :posts
+    has_many :themes
+
+    def is_valid?
+        self.name &&
+            self.email &&
+            self.provider &&
+            self.uid &&
+            self.profile_img
+    end
+
+    #
+    # OAuth Logic are below
+    #
+
     def self.find_by_oauth(auth)
         find_or_create_by(uid: auth.uid, provider: auth.provider)
     end
@@ -12,6 +27,7 @@ class User < ApplicationRecord
     def self.find_for_oauth(auth, signed_in_resource = nil)
         # user가 nil이 아니라면 받는다
 
+        myprint( auth.to_hash)
         user = signed_in_resource ? signed_in_resource : User.find_by_oauth(auth)
 
         # 신규 user라면 새로 만든다.
@@ -24,11 +40,13 @@ class User < ApplicationRecord
 
             unless user
                 # 없다면 새로운 데이터를 생성한다.
-
                 user = User.new
-                user.email          = auth.info.email               if auth.provider != "kakao"     # 카카오는 email을 제공하지 않음
+                if auth.provider != "kakao"     # 카카오는 email을 제공하지 않음
+                    user.email          = auth.info.email if auth.info.email
+                end
                 user.password       = Devise.friendly_token[0,20]
                 user.profile_img    = auth.info.image
+                user.name           = auth.info.name
                 user.provider       = auth.provider
                 user.uid            = auth.uid
                 # user.remote_profile_img_url = auth.info.image.gsub('http://','https://')
@@ -44,4 +62,11 @@ class User < ApplicationRecord
     def email_required?
         false
     end
+end
+
+
+def myprint(res)
+    puts "\n\n\n\n\n\n"
+    ap res
+    puts "\n\n\n\n\n\n"
 end
