@@ -12,4 +12,17 @@ $(document).ready(function () {
         console.log(top);
         thumbnail.find('.caption').css('top', top);
     });
+
+    $('#comment_omit_btn').click(function (e) {
+        var scroll = $(document).scrollTop();
+        $(this).toggle();
+        $('#disqus_thread').slideToggle();
+        e.stopPropagation();
+
+        // window.location.href = " ";
+        document.body.scrollTop = scroll;
+        return false;
+    });
+
+
 });

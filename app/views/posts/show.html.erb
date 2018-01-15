@@ -1,15 +1,21 @@
 
 <%
+    # 1. naver tv cast
+    # 2. youtube
+    # 3. facebook
+
+    video_url = 'http://serviceapi.rmcnmv.naver.com/flash/outKeyPlayer.nhn?vid=76E41BC7DFA2BC520751346FF3FB11FE605A&outKey=V122c28c1369a04541e5d1092798c96fc72b4b6a0cc41b7b6baff1092798c96fc72b4&controlBarMovable=true&jsCallable=true&isAutoPlay=true&skinName=tvcast_white'
     # video_url = 'http://www.youtube.com/embed/aaZXDm3RXuo'
-    video_url = 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Frealmudo%2Fvideos%2F698589283660718%2F&show_text=0&width=560'
+    # video_url = 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Frealmudo%2Fvideos%2F698589283660718%2F&show_text=0&width=560'
 %>
 <div class="container post-container w-100 p-b-15">
     <div class="row p-lr-50">
 
 
-
-
+        <!-- Post Content Ground -->
         <div class="col-md-8 p-lr-20 post-content-ground">
+
+            <!-- Viewer -->
             <div id="post-content-wrapper" class="card w-100">
 
                 <div class="embed-responsive embed-responsive-16by9">
@@ -57,18 +63,23 @@
 
             </div>
 
-            <%= render partial: '/layouts/partials/comment_disqus', locals: {classes: 'card w-100 p-lr-30 p-t-20 p-b-20'} %>
-
+            <!-- Comment -->
+            <%= render partial: '/layouts/partials/comment_disqus', locals: {classes: 'card w-100 p-lr-30 p-t-20 p-b-20', id: @post.id} %>
         </div>
 
 
 
 
         <div class="col-md-4">
+
+            <!-- Add Zone -->
             <div id="special-box-wrapper">
                 <div id="special-box" class="href" data-href="https://onoffmix.com/event/91656" data-window_open="true" style="background-image: url('https://onoffmix.com/images/event/91656')"></div>
             </div>
+
             <hr>
+
+            <!-- Related Posts -->
             <div class="posts-wrapper wide">
                 <%= render partial: '/posts/partials/post_card_template', collection: @post.theme.posts.reverse, as: :post %>
             </div>

@@ -1,0 +1,11 @@
+@import "variables/*";
+
+
+#comment_omit_btn{
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    #disqus_thread{ display: none }
+    #comment_omit_btn{ display: block }
+}

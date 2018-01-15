@@ -32,12 +32,12 @@
     <script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
 </head>
 
-<body class="<%= 'no-delivery' unless @delivery_display %>">
+<body class="<%= 'no-delivery' unless @delivery_display %> <%= 'no-carousel' unless @layout_carousel_display %>">
 
 <%= render partial: '/layouts/partials/delivery' if @delivery_display %>
 <%= render partial: '/layouts/partials/navbar' %>
 
-<section id="main" data-layout="layout-1" data-template="default">
+<section id="main" data-layout="layout-1" data-template="default" class="">
 
     <%= render partial: '/layouts/partials/flash' %>
 
