@@ -1,7 +1,5 @@
-<!-- Javascript Libraries -->
-<script src="/template/vendors/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/template/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+<!-- Javascript Libraries -->
 <script src="/template/vendors/bower_components/flot/jquery.flot.js"></script>
 <script src="/template/vendors/bower_components/flot/jquery.flot.resize.js"></script>
 <script src="/template/vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
@@ -29,3 +27,27 @@
 <script src="/template/js/charts.js"></script>
 <script src="/template/js/functions.js"></script>
 <script src="/template/js/demo.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+
+        $('.slick-items').slick({
+
+            autoplay : false,
+
+            speed : 300 /* 이미지가 슬라이딩시 걸리는 시간 */,
+
+            infinite: false,
+
+            arrows: true,
+
+            slidesToShow: 6,
+
+            slidesToScroll: 2,
+
+            fade: false
+
+        });
+
+    });
+</script>

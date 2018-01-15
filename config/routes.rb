@@ -7,7 +7,8 @@ Rails.application.routes.draw do
         omniauth_callbacks: 'users/omniauth_callbacks'
     }
     devise_scope :user do
-        get 'users/me', :to => 'users/sessions#show', as: 'my_page'
+        get 'users/:id(.:format)', :to => 'users/sessions#show', as: 'user'
+        get 'users/me', :to => 'users/sessions#my_page', as: 'my_page'
         match "/auth/kakao/callback(.:format)", to: 'users/omniauth_callbacks#kakao', via: [:get, :post]
     end
 

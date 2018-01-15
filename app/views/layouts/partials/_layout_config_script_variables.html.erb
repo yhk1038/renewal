@@ -1,0 +1,8 @@
+<%
+    layout_config = {
+        delivery_display:           @delivery_display,
+        navbar_transparent:         @navbar_transparent,
+        layout_carousel_display:    @layout_carousel_display
+    }
+%>
+<%= javascript_tag "_layout_ = #{layout_config.to_json};" %>

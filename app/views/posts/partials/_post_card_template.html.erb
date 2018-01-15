@@ -1,0 +1,18 @@
+
+<div data-src="https://www.youtube.com/watch?v=bZrrGF2MHIs" class="p-lr-5 p-relative">
+    <div class="thumbnail lightbox-item p-0 z-depth-1-bottom">
+        <img src="<%= post.thumbnail_img %>" alt="">
+        <div class="tbn-img" style="background-image: url('<%= post.thumbnail_img %>')"></div>
+        <span class="bookmark-btn zmdi zmdi-star-outline"></span>
+        <span class="runtime-badge"><%= post.runtime %></span>
+        <div class="caption p-b-0 href" data-href="<%= post_path(post) %>">
+            <h4><%= post.title %></h4>
+            <p class="post-info-line1 m-b-5"><span>방금 전 |</span> <%= post.user.name %></p>
+            <p class="post-info-line2 m-b-0">
+                <span class="zmdi zmdi-caret-right-circle"> 999K </span>
+                <span class="zmdi zmdi-favorite-outline"> 999K </span>
+                <span class="zmdi zmdi-star-outline"> 999K </span>
+            </p>
+        </div>
+    </div>
+</div>

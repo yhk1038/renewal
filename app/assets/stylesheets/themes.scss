@@ -5,6 +5,25 @@
 
 
 body #main{
+    .theme-container{
+        .block-header{
+            margin-bottom: -8px;
+            z-index: 2;
+            h2{
+                font-size: 14px;
+                width: fit-content;
+                background: #f83938;
+                color: #fff;
+                padding: 4px 8px 6px;
+            }
+        }
+        .card{
+            z-index: 1;
+        }
+    }
+}
+
+body #main{
     .theme,
     .theme-slot,
     .theme-slot:before,

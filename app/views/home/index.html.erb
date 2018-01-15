@@ -1,4 +1,30 @@
 
+<% @theme_groups.each do |theme_group| %>
+    <div class="container w-100 p-b-15">
+        <div class="block-header p-lr-20">
+            <h2><%= theme_group.title %></h2>
+        </div>
+    </div>
+
+    <% theme_group.themes.last(4).reverse.each do |theme| %>
+        <div class="container theme-container w-100 p-b-15">
+            <div class="block-header p-lr-20">
+                <h2><%= theme.title %></h2>
+            </div>
+
+            <div class="card bgm-transparent z-depth-0 p-lr-20">
+                <div class="card-body">
+                    <div class="showContents slick-items posts-wrapper">
+                        <%= render partial: '/posts/partials/post_card_template', collection: theme.posts.reverse, as: :post %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
+
+
 <% if user_signed_in? %>
 <div class="container">
     <div class="block-header">
@@ -81,31 +107,9 @@
     <div class="card">
         <div class="card-body">
             <div class="themes">
-                <%= render partial: '/themes/partials/theme_slot', collection: @themes, as: :theme %>
+                <%= render partial: '/themes/partials/theme_slot', collection: @themes, as: :theme, locals: {grid_size: 'col-md-6'} %>
             </div>
         </div>
     </div>
 </div>
 
-
-
-
-
-<div class="container">
-    <div class="block-header">
-        <h2>신규 컨텐츠 <small>이 곳에 추가적으로 안내용 텍스트를 넣을 수 있습니다. 이 아래에는 더미용 마크업 포멧이 포함되어 있습니다.</small></h2>
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-            <div class="showContents">
-                <% (6*10).times do |i| %>
-                <div class="showContents-card col-md-2 col-sm-3 col-xs-6">
-                    <div class="theme-slot-bgimg" style="background-image: url(/template/img/headers/1.png);"></div>
-                    <div class="theme-slot-title">theme1</div>
-                </div>
-                <% end %>
-            </div>
-        </div>
-    </div>
-</div>

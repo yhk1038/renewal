@@ -1,4 +1,25 @@
-<div class="theme-slot col-md-6">
-    <div class="theme-slot-bgimg" style="background-image: url(<%= theme.background_img %>);"></div>
-    <div class="theme-slot-title"><%= theme.title %></div>
-</div>
+
+<%
+    grid_side_size_l ||= ''
+    grid_side_size_r ||= ''
+    no_row  = grid_side_size_l.length.zero? && grid_side_size_r.length.zero?
+
+    left, right = true, true
+    left    = false if grid_side_size_l.length.zero?
+    right   = false if grid_side_size_r.length.zero?
+%>
+
+<%= '<div class="row">'.html_safe unless no_row %>
+    <% if left %>
+        <div class="<%= grid_side_size_l %>"></div>
+    <% end %>
+
+    <div class="theme-slot <%= grid_size %>" onclick="window.location = '<%= theme_path(theme) %>';">
+        <div class="theme-slot-bgimg" style="background-image: url(<%= theme.background_img %>);"></div>
+        <div class="theme-slot-title"><%= theme.title %></div>
+    </div>
+
+    <% if right %>
+        <div class="<%= grid_side_size_r %>"></div>
+    <% end %>
+<%= '</div>'.html_safe unless no_row %>

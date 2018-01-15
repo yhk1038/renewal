@@ -3,3 +3,366 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "components/variables/*";
+
+body #main{
+    .posts-wrapper{
+        .thumbnail{
+            height: 230px;
+            transition: all 200ms ease;
+
+            &:hover{
+                box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
+            }
+
+            &:before{
+                content: '';
+                position: absolute;
+                width: calc(100% - 12px);
+                height: 120px;
+                left: 6px;
+                top: 1px;
+                background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.5) 100%);
+            }
+
+            & > img{
+                display: inline;
+                z-index: 1;
+                min-height: auto;
+            }
+            & > .tbn-img{
+                display: none;
+            }
+
+
+            & > span.bookmark-btn,
+            & > span.runtime-badge{
+                position: absolute;
+                right: 12px;
+            }
+
+
+            &.bookmark-active > span.bookmark-btn,
+            & > span.bookmark-btn{
+                top: 6px;
+                text-shadow: 0 1px 3px #333;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 200ms ease;
+            }
+            & > span.bookmark-btn{
+                color: #fff;
+                opacity: .7;
+            }
+            &.bookmark-active > span.bookmark-btn{
+                color: yellow;
+                opacity: 1;
+                &:before{
+                    content: '\f27d';
+                }
+            }
+            &:hover > span.bookmark-btn{
+                opacity: 1;
+            }
+
+
+            & > span.runtime-badge{
+                top: 100px;
+                color: #fff;
+                background: rgba(0, 0, 0, 0.75);
+                padding: 1px 4px;
+                border-radius: 2px;
+                font-size: 11px;
+                font-weight: bold;
+            }
+
+
+
+            & > .caption{
+                z-index: 2;
+                position: relative;
+                top: -45px;
+                background: #fff;
+                cursor: pointer;
+
+                h4{
+                    word-break: break-all;
+                    line-height: 18px;
+                    height: 36px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 100%;
+                }
+
+                p.post-info-line1{
+                    font-weight: 600;
+                    span{
+                        opacity: .7;
+                        font-weight: 400;
+                    }
+                }
+                p.post-info-line2{
+                    span{
+                        font-size: 12px;
+                        padding-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .posts-wrapper.wide{
+        .thumbnail{
+            height: 120px;
+            margin-bottom: 10px;
+
+            &:before{
+                position: absolute;
+                width: calc(40% - 5px);
+                height: 120px;
+                left: 6px;
+                top: 1px;
+            }
+
+            & > img{
+                display: none;
+            }
+            & > .tbn-img{
+                display: block;
+                height: 120px;
+                position: absolute;
+                width: calc(40% - 5px);
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+
+            & > span.bookmark-btn,
+            & > span.runtime-badge{
+                position: absolute;
+                right: calc(5px + 60%);
+            }
+
+
+            & > span.runtime-badge{
+                top: 100px;
+                padding: 1px 4px;
+                border-radius: 2px;
+                font-size: 11px;
+            }
+
+
+
+            & > .caption{
+                top: 0;
+                width: 60%;
+                float: right;
+
+                h4{
+                    height: 60px;
+                    margin: 0 !important;
+                }
+
+                p.post-info-line1{
+                    //
+                    span{
+                        //
+                    }
+                }
+                p.post-info-line2{
+                    span{
+                        font-size: 12px;
+                        padding-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .post-container{
+        margin-top: -40px;
+    }
+}
+
+
+
+#post-info-body{
+    border-bottom: 1px solid #d3d3d3;
+
+    .info-line{
+        font-size: 16px;
+        color: #999;
+
+        span{
+            color: #333;
+            padding-right: 6px;
+        }
+    }
+
+    .actionBox{
+        display: inline-block;
+        float: right;
+        position: relative;
+        top: calc(0px - 22px - 10px); // calc(0 - '.info-line-1:line-height' - '.actionBox>ul>li>a>span:height/2')
+
+        ul{
+            list-style: none;
+            padding: 0;
+
+            li{
+                float: left;
+                margin-left: 8px;
+                text-align: center;
+
+                a{
+                    span{
+                        color: #999;
+                        padding: 0;
+                        width: 40px;
+                        line-height: 40px;
+                        font-size: 24px;
+                        border: 1px solid #ddd;
+                        border-radius: 100%;
+                        transition: all 200ms ease;
+
+                        &:hover{
+                            color: #333;
+                            border: 1px solid #999;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#post-user-body{
+    #post-user-profile{
+        line-height: 40px;
+        position: relative;
+        display: inline-block;
+        z-index: 2;
+
+        .user-profile_img{
+            float: left;
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            border-radius: 100%;
+            border: 1px solid #d3d3d3;
+            margin-right: 10px;
+        }
+
+        ul{
+            list-style: none;
+            padding: 0;
+            padding-left: 50px;
+            margin-bottom: 3px;
+
+            li{
+                color: #333;
+                font-size: 16px;
+                line-height: 20px;
+                width: fit-content;
+                position: relative;
+                top: 0;
+                transition: all 100ms ease;
+
+                &:last-child{
+                    font-size: 14px;
+                    opacity: 0.75;
+                }
+            }
+        }
+
+        &:hover ul li:first-child{
+            top: -4px;
+        }
+    }
+
+    #subscribe-btn{
+        line-height: 40px;
+        position: relative;
+        float: right;
+        width: 100%;
+        text-align: right;
+        top: -45px;
+        z-index: 1;
+
+        a{
+            color: #999;
+            border: 1px solid #ddd;
+            transition: all 200ms ease;
+        }
+
+        &:hover a{
+            color: #333;
+            border: 1px solid #999;
+        }
+    }
+}
+
+
+
+
+#special-box-wrapper,
+#special-box{
+    width: 100%;
+}
+#special-box-wrapper{
+    padding: 0 6px;
+    margin: 0 0 15px;
+
+    #special-box{
+        height: 240px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+        background-color: #fff;
+        background-size: contain;
+        background-position: 0 center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+}
+@media screen and (max-width: 767px) {
+    #special-box-wrapper{ display: none }
+}
+
+
+
+
+@media screen and (max-width: 767px) {
+    #post-content-wrapper{
+        padding-top: 70px;
+
+        #post-user-body{
+            position: absolute;
+            height: 70px;
+            background: #fff;
+            top: 0;
+        }
+    }
+
+    body #content{
+        padding-top: 70px;
+
+        .post-container > .row,
+        .post-container > .row > .post-content-ground{
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+    }
+
+    .post-container #post-info-body .actionBox{
+        top: calc(0px - 22px - 15px);
+
+        ul li{
+            margin-left: 6px;
+
+            a span{
+                width: 34px;
+                line-height: 34px;
+                font-size: 20px;
+            }
+        }
+    }
+}

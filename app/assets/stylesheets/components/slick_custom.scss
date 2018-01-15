@@ -1,0 +1,46 @@
+@import "variables/global";
+
+$slick_button_default_opacity: .3;
+$slick_button_diabled_opacity: 0;
+$slick_button_color: #000;
+$slick_button_size: 40px;
+$slick_button_size_minus_top: -30px;
+$slick_button_size_minus_half: -20px;
+$slick_button_size_minus_shift: -30px;
+
+.slick-items{
+    .slick-prev,
+    .slick-next{
+        width: $slick_button_size;
+        height: $slick_button_size;
+        margin-top: $slick_button_size_minus_top;
+        color: $slick_button_color;
+    }
+
+    .slick-prev {
+        left: $slick_button_size_minus_shift;
+        &:before{
+            content: '\f2fa';
+        }
+    }
+    .slick-next {
+        right: $slick_button_size_minus_shift;
+        &:before{
+            content: '\f2fb';
+        }
+    }
+
+    .slick-prev:before,
+    .slick-next:before{
+        font-family: 'Material-Design-Iconic-Font';
+        color: $slick_button_color;
+        font-size: $slick_button_size;
+        opacity: $slick_button_default_opacity;
+        font-weight: 700;
+    }
+
+    .slick-prev.slick-disabled:before,
+    .slick-next.slick-disabled:before{
+        opacity: $slick_button_diabled_opacity;
+    }
+}

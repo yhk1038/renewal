@@ -1,31 +1,23 @@
-<p id="notice"><%= notice %></p>
+<% @theme_groups.each do |theme_group| %>
+    <span class="tg_info" style="display: none;" data-tg_id="<%= theme_group.id %>"><%= theme_group.to_json %></span>
+    <span class="tg_themes_info" style="display: none;" data-tg_id="<%= theme_group.id %>"><%= theme_group.themes.all.to_json %></span>
+    <div class="container">
+        <div class="block-header">
+            <h2><%= theme_group.title %> <small><%= theme_group.id %> <%= theme_group.description %></small></h2>
 
-<h1>Themes</h1>
+            <ul class="actions">
+                <li>
+                    <a class="toggleTgModal btn btn-link" href="" data-toggle="modal" data-target="#tgModal" data-tg_id="<%= theme_group.id %>">더 보기</a>
+                </li>
+            </ul>
+        </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Background img</th>
-      <th>Thumbnail img</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @themes.each do |theme| %>
-      <tr>
-        <td><%= theme.title %></td>
-        <td><%= theme.background_img %></td>
-        <td><%= theme.thumbnail_img %></td>
-        <td><%= link_to 'Show', theme %></td>
-        <td><%= link_to 'Edit', edit_theme_path(theme) %></td>
-        <td><%= link_to 'Destroy', theme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Theme', new_theme_path %>
+        <div class="card">
+            <div class="card-body">
+                <div class="themes">
+                    <%= render partial: '/themes/partials/theme_slot', collection: theme_group.themes.first(4), as: :theme, locals: {grid_size: 'col-md-6'} %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

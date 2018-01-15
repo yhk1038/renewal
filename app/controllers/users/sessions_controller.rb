@@ -3,6 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
     # before_action :configure_sign_in_params, only: [:create]
     before_action :is_login?, only: [:show]
+    before_action :set_layout_variables, only: [:show]
 
     # GET /resource/sign_in
     # def new
@@ -11,6 +12,12 @@ class Users::SessionsController < Devise::SessionsController
 
     # GET (/resource/:id) changed to => my_page_path
     def show
+        set_layout [false, false, false]
+    end
+
+    # GET (/resource/:id) changed to => my_page_path
+    def my_page
+        set_layout [false, false, false]
         render layout: '/layouts/mypage_layout'
     end
 
@@ -30,4 +37,8 @@ class Users::SessionsController < Devise::SessionsController
     # def configure_sign_in_params
     #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
     # end
+
+    def set_layout_variables
+        super
+    end
 end

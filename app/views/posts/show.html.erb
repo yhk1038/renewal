@@ -1,9 +1,77 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @post.user %>
-</p>
+<%
+    # video_url = 'http://www.youtube.com/embed/aaZXDm3RXuo'
+    video_url = 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Frealmudo%2Fvideos%2F698589283660718%2F&show_text=0&width=560'
+%>
+<div class="container post-container w-100 p-b-15">
+    <div class="row p-lr-50">
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+
+
+
+        <div class="col-md-8 p-lr-20 post-content-ground">
+            <div id="post-content-wrapper" class="card w-100">
+
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe src="<%= video_url %>"
+                            class="embed-responsive-item"
+                            style="border:none;overflow:hidden"
+                            scrolling="no"
+                            allowTransparency="true"
+                            allowFullScreen="true"
+                            frameborder="0">
+                    </iframe>
+                </div>
+
+                <div id="post-info-body" class="card-body card-padding w-100">
+                    <h3 class="m-t-0"><%= @post.title %></h3>
+                    <p class="info-line info-line-1 m-b-0">
+                        <span class="zmdi zmdi-caret-right-circle"> 999K </span>
+                        <span class="zmdi zmdi-favorite-outline"> 999K </span>
+                        <span class="zmdi zmdi-star-outline"> 999K </span>
+                        | 3분 전
+                    </p>
+                    <div class="actionBox">
+                        <ul>
+                            <!--<li><a href=""><span class="zmdi zmdi-caret-right-circle"></span></a></li>-->
+                            <li><a href=""><span class="zmdi zmdi-favorite-outline"></span></a></li>
+                            <li><a href=""><span class="zmdi zmdi-share"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="post-user-body" class="card-body card-padding w-100 p-t-5 p-b-10">
+                    <div class="m-b-0 w-100 p-t-10">
+                        <a id="post-user-profile" href="<%= user_path(@post.user) %>">
+                            <div class="user-profile_img" style="background-image: url('<%= @post.user.profile_img %>')"></div>
+                            <ul>
+                                <li>@<%= @post.user.name %></li>
+                                <li>20명 구독중</li>
+                            </ul>
+                        </a>
+                        <div id="subscribe-btn">
+                            <a href="" class="btn btn-default btn-link">구독하기</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <%= render partial: '/layouts/partials/comment_disqus', locals: {classes: 'card w-100 p-lr-30 p-t-20 p-b-20'} %>
+
+        </div>
+
+
+
+
+        <div class="col-md-4">
+            <div id="special-box-wrapper">
+                <div id="special-box" class="href" data-href="https://onoffmix.com/event/91656" data-window_open="true" style="background-image: url('https://onoffmix.com/images/event/91656')"></div>
+            </div>
+            <hr>
+            <div class="posts-wrapper wide">
+                <%= render partial: '/posts/partials/post_card_template', collection: @post.theme.posts.reverse, as: :post %>
+            </div>
+        </div>
+    </div>
+</div>

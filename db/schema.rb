@@ -10,22 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180106175437) do
+ActiveRecord::Schema.define(version: 20180113194826) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "theme_id"
+    t.string "content_type"
+    t.string "runtime"
+    t.string "title"
+    t.string "thumbnail_img"
+    t.index ["theme_id"], name: "index_posts_on_theme_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "theme_groups", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "themes", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "theme_group_id"
     t.string "title", default: "Theme Title", null: false
     t.string "background_img"
     t.string "thumbnail_img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["theme_group_id"], name: "index_themes_on_theme_group_id"
     t.index ["user_id"], name: "index_themes_on_user_id"
   end
 

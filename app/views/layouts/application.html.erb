@@ -22,20 +22,32 @@
     <link href="/template/css/app.min.1.css" rel="stylesheet">
     <link href="/template/css/app.min.2.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />
+
+    <%= render partial: '/layouts/partials/layout_config_script_variables' %>
+    <script src="/template/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/template/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
 </head>
 
-<body>
+<body class="<%= 'no-delivery' unless @delivery_display %>">
 
-<%= render partial: '/layouts/partials/delivery' %>
+<%= render partial: '/layouts/partials/delivery' if @delivery_display %>
 <%= render partial: '/layouts/partials/navbar' %>
 
 <section id="main" data-layout="layout-1" data-template="default">
 
     <%= render partial: '/layouts/partials/flash' %>
 
-    <div id="carousel-wrapper">
-        <%= render partial: '/layouts/partials/carousel' %>
-    </div>
+    <% if @layout_carousel_display %>
+        <div id="carousel-wrapper">
+            <%= render partial: '/layouts/partials/carousel' %>
+        </div>
+    <% else %>
+        <div id="replace-carousel-wrapper"></div>
+    <% end %>
 
     <%= render partial: '/layouts/partials/sidebar' %>
 
@@ -54,11 +66,25 @@
     <%= render partial: '/layouts/partials/login_modal' %>
 <% end %>
 
+<!-- Modal -->
+<div class="modal fade" id="tgModal" tabindex="-1" role="dialog" aria-labelledby="tgModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="tgModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body" id="tgModalBody">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Older IE warning message -->
 <%= render partial: '/layouts/partials/ie_warning' %>
 
 <%= render partial: '/layouts/partials/javascript_libraries' %>
 <%= javascript_include_tag 'application' %>
-
 </body>
 </html>

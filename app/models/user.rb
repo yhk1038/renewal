@@ -1,5 +1,3 @@
-
-
 class User < ApplicationRecord
     include RestClient
     # Include default devise modules. Others available are:
