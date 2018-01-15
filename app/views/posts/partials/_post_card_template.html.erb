@@ -1,6 +1,6 @@
 
 <div data-src="https://www.youtube.com/watch?v=bZrrGF2MHIs" class="p-lr-5 p-relative">
-    <div class="thumbnail lightbox-item p-0 z-depth-1-bottom">
+    <div class="thumbnail thumbnail-post lightbox-item p-0 z-depth-1-bottom <%= 'bookmark-active' if active_bookmark? post %>" data-id="<%= post.id %>" data-user_id="<%= user_signed_in? ? current_user.id : 0 %>">
         <img src="<%= post.thumbnail_img %>" alt="">
         <div class="tbn-img" style="background-image: url('<%= post.thumbnail_img %>')"></div>
         <span class="bookmark-btn zmdi zmdi-star-outline"></span>

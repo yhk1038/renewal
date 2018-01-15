@@ -5,4 +5,5 @@
         layout_carousel_display:    @layout_carousel_display
     }
 %>
-<%= javascript_tag "_layout_ = #{layout_config.to_json};" %>
+<%= javascript_tag "_layout_ = #{layout_config.to_json}; _form_auth_ = '"+form_authenticity_token+"';" %>
+<script type="text/javascript" src="/js/app.js"></script>

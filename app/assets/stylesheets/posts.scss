@@ -325,6 +325,12 @@ body #main{
 }
 @media screen and (max-width: 767px) {
     #special-box-wrapper{ display: none }
+    body #main .posts-wrapper .thumbnail > .caption p.post-info-line2 span{
+        padding-right: 2px !important;
+    }
+    body #main .theme-container .block-header{
+        margin-bottom: 8px !important;
+    }
 }
 
 

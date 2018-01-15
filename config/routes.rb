@@ -15,5 +15,11 @@ Rails.application.routes.draw do
     resources :posts
     resources :themes
 
+    scope module: :action do
+        resources :view_counts
+        resources :bookmarks
+        resources :likes
+    end
+
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

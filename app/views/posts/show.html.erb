@@ -16,7 +16,7 @@
         <div class="col-md-8 p-lr-20 post-content-ground">
 
             <!-- Viewer -->
-            <div id="post-content-wrapper" class="card w-100">
+            <div id="post-content-wrapper" class="card w-100 thumbnail-post <%= 'like-active' if active_like?(@post) %> <%= 'bookmark-active' if active_bookmark?(@post) %>" data-id="<%= @post.id %>" data-user_id="<%= user_signed_in? ? current_user.id : 0 %>">
 
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe src="<%= video_url %>"
@@ -39,8 +39,8 @@
                     </p>
                     <div class="actionBox">
                         <ul>
-                            <!--<li><a href=""><span class="zmdi zmdi-caret-right-circle"></span></a></li>-->
-                            <li><a href=""><span class="zmdi zmdi-favorite-outline"></span></a></li>
+                            <li><a class="like-btn" href=""><span class="zmdi zmdi-favorite<%= active_like?(@post) ? ' c-red' : '-outline' %>"></span></a></li>
+                            <li><a class="bookmark-btn" href=""><span class="zmdi zmdi-star<%= active_bookmark?(@post) ? ' c-amber' : '-outline' %>"></span></a></li>
                             <li><a href=""><span class="zmdi zmdi-share"></span></a></li>
                         </ul>
                     </div>
@@ -81,7 +81,7 @@
 
             <!-- Related Posts -->
             <div class="posts-wrapper wide">
-                <%= render partial: '/posts/partials/post_card_template', collection: @post.theme.posts.reverse, as: :post %>
+                <%= render partial: '/posts/partials/post_card_template', collection: @post.theme.posts.reverse - [@post], as: :post %>
             </div>
         </div>
     </div>

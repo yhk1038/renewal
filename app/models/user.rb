@@ -9,6 +9,10 @@ class User < ApplicationRecord
     has_many :posts
     has_many :themes
 
+    has_many :likes
+    has_many :bookmarks
+    has_many :view_counts
+
     def is_valid?
         self.name &&
             self.email &&
