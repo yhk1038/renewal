@@ -29,19 +29,14 @@ function exec_slick() {
     // console.log('exec!', [toShow, toScroll]);
 
     $('.slick-items').slick({
-        autoplay : false,
-
-        speed : 300,
-
-        infinite: false,
-
-        arrows: true,
+        autoplay :  false,
+        fade:       false,
+        speed :     300,
+        infinite:   false,
+        arrows:     true,
 
         slidesToShow:   6,
-
         slidesToScroll: 3,
-
-        fade: false,
 
         responsive: [
             {

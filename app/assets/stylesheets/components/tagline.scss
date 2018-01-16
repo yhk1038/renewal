@@ -1,0 +1,24 @@
+body #tag-line-header{
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 20;
+    background: #fff;
+
+    .tag-wrap{
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        ul{
+            list-style: none;
+            padding: 0;
+
+            li.tag-item{
+                float: left;
+                line-height: 28px;
+                padding: 0 10px;
+                margin: 6px 0;
+            }
+        }
+    }
+}

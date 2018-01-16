@@ -4,7 +4,8 @@
 
 @import "components/variables/*";
 
-body #main{
+body #main,
+body #searchModal{
     .posts-wrapper{
         .thumbnail{
             height: 230px;
@@ -206,22 +207,11 @@ body #main{
         top: calc(0px - 22px - 10px); // calc(0 - '.info-line-1:line-height' - '.actionBox>ul>li>a>span:height/2')
 
         ul{
-            list-style: none;
-            padding: 0;
-
             li{
-                float: left;
                 margin-left: 8px;
-                text-align: center;
-
                 a{
                     span{
                         color: #999;
-                        padding: 0;
-                        width: 40px;
-                        line-height: 40px;
-                        font-size: 24px;
-                        border: 1px solid #ddd;
                         border-radius: 100%;
                         transition: all 200ms ease;
 

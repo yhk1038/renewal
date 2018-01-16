@@ -1,0 +1,126 @@
+@import "variables/*";
+
+
+#searchModal.modal{
+    .modal-dialog,
+    .modal-content{
+        min-height: 100%;
+    }
+
+    .modal-dialog{
+        margin: 0;
+        width: 100%;
+    }
+    .modal-content{
+        border-radius: 0;
+        background-color: rgba(255, 255, 255, 0.9)
+    }
+    .modal-header{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background: #FFFFFF;
+        position: relative;
+        z-index: 30;
+    }
+
+
+    #searchModalLabel{
+        .fg-line:not(.form-group){
+            padding-top: 14px;
+            margin-bottom: 10px;
+        }
+        .input-lg{
+            height: 58px;
+            font-size: 26px;
+        }
+        .input-group-addon{
+            font-size: 42px;
+            cursor: pointer;
+            color: #a0a0a0;
+            height: 82px;
+        }
+    }
+
+    #searchCategoryZone{
+        position: relative;
+
+        ul{
+            li{
+                &.active a span{
+                    color: #f44336 !important;
+                    opacity: .6;
+                    &:hover{
+                        opacity: 1;
+                    }
+                }
+                margin: 5px 50px 15px 0;
+                transition: all 200ms ease;
+
+                a{
+                    span{
+                        border: none;
+                        color: #b0b0b0;
+                        font-size: 20px;
+                        font-weight: bold;
+                        transition: all 200ms ease;
+
+                        &:hover{
+                            color: #333;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+body.modal-open #searchModal {
+    .posts-wrapper.wide {
+        padding-top: 30px;
+
+        .thumbnail {
+            height: 150px;
+
+            &:before,
+            & > .tbn-img{
+                height: 150px;
+                width: calc(40% - 50px);
+            }
+            & > span.bookmark-btn,
+            & > span.runtime-badge{
+                right: calc(60% + 50px);
+            }
+            & > span.runtime-badge{
+                top: 125px;
+            }
+
+            & > .caption{
+                width: calc(60% + 50px - 15px - 5px);
+                padding-top: 20px;
+                height: 70px;
+
+                h4{
+                    line-height: 22px;
+                    font-size: 20px;
+                }
+
+                p.post-info-line1{
+                    font-size: 16px;
+                    margin-bottom: 8px !important;
+                    span{
+                        font-size: 14px;
+                    }
+                }
+                p.post-info-line2{
+                    span{
+                        font-size: 16px;
+                        padding-right: 12px;
+                    }
+                }
+            }
+        }
+    }
+}

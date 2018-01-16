@@ -34,6 +34,7 @@
 
 <body class="<%= 'no-delivery' unless @delivery_display %> <%= 'no-carousel' unless @layout_carousel_display %>">
 
+<%#= render partial: '/layouts/partials/tagline' %>
 <%= render partial: '/layouts/partials/delivery' if @delivery_display %>
 <%= render partial: '/layouts/partials/navbar' %>
 
@@ -61,25 +62,8 @@
 <!-- Page Loader -->
 <%= render partial: '/layouts/partials/page_loader' %>
 
-<!-- Modal -->
-<% unless user_signed_in? %>
-    <%= render partial: '/layouts/partials/login_modal' %>
-<% end %>
-
-<!-- Modal -->
-<div class="modal fade" id="tgModal" tabindex="-1" role="dialog" aria-labelledby="tgModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="tgModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body" id="tgModalBody">
-                ...
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Modals -->
+<%= render partial: '/layouts/partials/modals/modal_bundle' %>
 
 <!-- Older IE warning message -->
 <%= render partial: '/layouts/partials/ie_warning' %>

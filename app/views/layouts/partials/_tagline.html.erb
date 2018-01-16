@@ -1,0 +1,15 @@
+
+<%
+    tags = ('a'..'z').to_a.map{|c| c*4}
+%>
+<div id="tag-line-header" class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 tag-wrap">
+            <ul>
+                <% tags.each do |tag| %>
+                    <li class="tag-item"><a href="" class="btn btn-default "><span># <%= tag %></span></a></li>
+                <% end  %>
+            </ul>
+        </div>
+    </div>
+</div>

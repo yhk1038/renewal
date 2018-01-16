@@ -1,89 +1,136 @@
 @import "global";
 
-
-
 /*
  *      Html Tag Element Default
  */
-hr{
+hr {
     border-top: 1px solid #b3b3b3 !important;
 }
 
+
+/*
+ *      Inline li (class: .row_ul)
+ */
+ul.row_ul {
+    list-style: none;
+    padding-left: 0;
+
+    li{
+        float: left;
+        margin-left: 1px;
+        text-align: center;
+
+        a{
+            span{
+                padding: 0;
+                width: 40px;
+                line-height: 40px;
+                font-size: 24px;
+                border: 1px solid #ddd;
+            }
+        }
+    }
+}
+
+
+/*
+ *      Modal
+ */
+.modal.fade.only .modal-dialog
+{
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+}
 
 
 /*
  *      Background Color
  */
 
-.bgm-transparent{
+.bgm-transparent {
     background-color: transparent !important;
 }
-
-
 
 /*
  *      Box Shadow
  */
 
-.z-depth-0{
+.z-depth-0 {
     box-shadow: 0 0 0 transparent !important;
 }
-
-
 
 /*
  *      Padding
  */
 
-.p-lr-0{
+.p-lr-0 {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
-.p-lr-5{
+
+.p-lr-5 {
     padding-left: 5px !important;
     padding-right: 5px !important;
 }
-.p-lr-10{
+
+.p-lr-10 {
     padding-left: 10px !important;
     padding-right: 10px !important;
 }
-.p-lr-15{
+
+.p-lr-15 {
     padding-left: 15px !important;
     padding-right: 15px !important;
 }
-.p-lr-20{
+
+.p-lr-20 {
     padding-left: 20px !important;
     padding-right: 20px !important;
 }
-.p-lr-25{
+
+.p-lr-25 {
     padding-left: 25px !important;
     padding-right: 25px !important;
 }
-.p-lr-30{
+
+.p-lr-30 {
     padding-left: 30px !important;
     padding-right: 30px !important;
 }
-.p-lr-35{
+
+.p-lr-35 {
     padding-left: 35px !important;
     padding-right: 35px !important;
 }
-.p-lr-40{
+
+.p-lr-40 {
     padding-left: 40px !important;
     padding-right: 40px !important;
 }
-.p-lr-45{
+
+.p-lr-45 {
     padding-left: 45px !important;
     padding-right: 45px !important;
 }
-.p-lr-50{
+
+.p-lr-50 {
     padding-left: 50px !important;
     padding-right: 50px !important;
 }
-.p-lr-55{
+
+.p-lr-55 {
     padding-left: 55px !important;
     padding-right: 55px !important;
 }
-.p-lr-60{
+
+.p-lr-60 {
     padding-left: 60px !important;
     padding-right: 60px !important;
 }

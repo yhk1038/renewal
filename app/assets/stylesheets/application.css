@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+html.full,
+html.full > body{
+    height: 100%;
+}
+html.full > body.modal-open{
+    padding-right: 0 !important;
+}
+html.full > body.modal-open .modal{
+    padding: 0 15px !important;
+}
+html.full > body.modal-open footer{
+    position: relative !important;
+}
