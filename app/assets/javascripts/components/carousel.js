@@ -11,6 +11,7 @@ $(document).ready(function () {
 
         if (opacity >= 0){
             $('.carousel-caption').css('opacity', opacity);
+            $('.imgbody-cover').css('opacity', opacity);
             $('.carousel-inner').css('top', 0 - liftup);
         }
     });

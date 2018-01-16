@@ -96,6 +96,7 @@ body{
                 //height: $carousel_height;
                 z-index: 1;
                 background-image: none;
+                width: 4%;
             }
 
             .carousel-indicators{
@@ -109,12 +110,81 @@ body{
                 top: 0;
             }
 
+            .item > img{
+                filter: blur(10px);
+            }
+
             .cover_bg,
             .carousel-caption{
                 background: $body_background_color;
                 opacity: 0;
                 height: 100%;
                 z-index: 1;
+            }
+
+            .carousel-info{
+                position: absolute;
+                top: 205px;
+                z-index: 5;
+                width: 100%;
+
+                .carousel-info-thumbnail-img,
+                .carousel-info-thumbnail-info{
+                    width: fit-content;
+                    display: inline-block;
+                }
+                .carousel-info-thumbnail-img{
+                    position: relative;
+                    top: 8px;
+
+                    .imgbody,
+                    .imgbody-cover{
+                        display: inline-block;
+                        width: 197px;
+                        height: 197px;
+                        border: 2px solid #e0e0e0;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: cover;
+                    }
+                    .imgbody-cover{
+                        position: absolute;
+                        background-color: #edecec;
+                        opacity: 0;
+                        top: 0;
+                    }
+                }
+                .carousel-info-thumbnail-info{
+                    padding-left: 20px;
+
+                    p{
+                        color: #FFFFFF;
+                        text-shadow: 0 1px 3px #333;
+
+                        &.carousel-info-label{
+                            font-size: 18px;
+                        }
+
+                        &.carousel-info-title{
+                            font-size: 27px;
+                            line-height: 1.1;
+                            a{
+                                color: #FFFFFF;
+                            }
+                        }
+
+                        &.carousel-info-subtitle{
+                            font-size: 22px;
+                            line-height: 1.25;
+                        }
+                    }
+                    .carousel-info-others{
+                        color: #FFFFFF;
+                        text-shadow: 0 1px 3px #333;
+                        line-height: 28px;
+                        font-size: 16px;
+                    }
+                }
             }
         }
     }
@@ -147,5 +217,11 @@ body{
         .carousel-caption{
 
         }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .carousel-info-thumbnail-img{
+        display: none !important;
     }
 }

@@ -134,3 +134,10 @@ ul.row_ul {
     padding-left: 60px !important;
     padding-right: 60px !important;
 }
+
+@media screen and (max-width: 767px) {
+    .p-lr-60 {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
