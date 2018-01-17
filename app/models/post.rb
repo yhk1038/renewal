@@ -5,10 +5,22 @@ class Post < ApplicationRecord
     has_many :likes
     has_many :bookmarks
     has_many :view_counts
+    has_many :subscribes
 
 
     def is_active?(res, current_user)
         eval("self.#{res}.find_by(user: current_user)")
+    end
+
+    def author
+        self.user
+    end
+
+    def self.sort_of(method)
+        case method
+        when 'new'
+            order(created_at: :desc)
+        end
     end
 
     def self.to_embed(args={})

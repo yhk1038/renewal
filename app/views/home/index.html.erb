@@ -1,115 +1,30 @@
 
-<% @theme_groups.each do |theme_group| %>
-    <div class="container w-100 p-b-15">
-        <div class="block-header p-lr-20">
-            <h2><%= theme_group.title %></h2>
-        </div>
-    </div>
-
-    <% theme_group.themes.last(4).reverse.each do |theme| %>
-        <div class="container theme-container w-100 p-b-15">
+<% @sections.each_with_index do |section, i| %>
+    <% unless section[:title].nil? %>
+        <div class="container w-100 p-b-15 <%= 'sep bg-img-attr' unless i.zero? %>" style="<%= "background: url('#{section[:tracks].first.posts.last.thumbnail_img}')" unless i.zero? %>">
             <div class="block-header p-lr-20">
-                <h2><%= theme.title %> (<%= theme.posts.count %>)</h2>
+                <h2><%= section[:title] %></h2>
             </div>
+        </div>
+    <% end %>
+
+    <% section[:tracks].each do |track| %>
+        <% posts = track.posts.last(20).reverse %>
+        <div class="container theme-container w-100 p-b-15">
+            <% if section[:label] %>
+                <div class="block-header p-lr-20">
+                    <h2><%= track.title %> (<%= posts.count %>)</h2>
+                </div>
+            <% end %>
 
             <div class="card bgm-transparent z-depth-0 p-lr-20">
                 <div class="card-body">
                     <div class="showContents slick-items posts-wrapper">
-                        <%= render partial: '/posts/partials/post_card_template', collection: theme.posts.reverse, as: :post %>
+                        <%= render partial: '/posts/partials/post_card_template', collection: posts, as: :post %>
                     </div>
                 </div>
             </div>
         </div>
     <% end %>
 <% end %>
-
-
-
-<% if user_signed_in? %>
-<div class="container">
-    <div class="block-header">
-        <h2>구독한 채널의 새소식 <small>이 곳에 추가적으로 안내용 텍스트를 넣을 수 있습니다. 이 아래에는 더미용 마크업 포멧이 포함되어 있습니다.</small></h2>
-
-        <ul class="actions">
-            <li>
-                <a class="btn btn-link" href="">더 보기</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-            <div class="lightbox myCards photos">
-
-                <div data-src="https://www.youtube.com/watch?v=bZrrGF2MHIs" class="col-xs-4 col-sm-4 col-md-3">
-                    <div class="thumbnail lightbox-item">
-                        <img src="http://via.placeholder.com/600x400" alt="">
-                        <div class="caption">
-                            <h4>Thumbnail label</h4>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                            <!--<div class="m-b-5">-->
-                                <!--<a href="#" class="btn btn-sm btn-primary waves-effect" role="button">Button</a>-->
-                            <!--</div>-->
-                        </div>
-                    </div>
-                </div>
-
-                <div data-src="https://www.youtube.com/watch?v=bZrrGF2MHIs" class="col-xs-4 col-sm-4 col-md-3">
-                    <div class="thumbnail lightbox-item">
-                        <img src="/template/media/gallery/1.jpg" alt="">
-                        <div class="caption">
-                            <h4>Thumbnail label</h4>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        </div>
-                    </div>
-                </div>
-                <div data-src="https://www.youtube.com/watch?v=bZrrGF2MHIs" class="col-xs-4 col-sm-4 col-md-3">
-                    <div class="thumbnail lightbox-item">
-                        <img src="/template/media/gallery/2.jpg" alt="">
-                        <div class="caption">
-                            <h4>Thumbnail label</h4>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        </div>
-                    </div>
-                </div>
-                <div data-src="https://www.youtube.com/watch?v=bZrrGF2MHIs" class="col-xs-4 col-sm-4 col-md-3">
-                    <div class="thumbnail lightbox-item">
-                        <img src="/template/media/gallery/3.jpg" alt="">
-                        <div class="caption">
-                            <h4>Thumbnail label</h4>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-<% end %>
-
-
-
-
-
-
-<div class="container">
-    <div class="block-header">
-        <h2>HOT 테마 <small>이 곳에 추가적으로 안내용 텍스트를 넣을 수 있습니다. 이 아래에는 더미용 마크업 포멧이 포함되어 있습니다.</small></h2>
-
-        <ul class="actions">
-            <li><%= link_to '더 보기', themes_path, class: 'btn btn-link' %></li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-            <div class="themes">
-                <%= render partial: '/themes/partials/theme_slot', collection: @themes, as: :theme, locals: {grid_size: 'col-md-6'} %>
-            </div>
-        </div>
-    </div>
-</div>
 

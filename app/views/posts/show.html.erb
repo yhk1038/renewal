@@ -16,7 +16,11 @@
         <div class="col-md-8 p-lr-20 post-content-ground">
 
             <!-- Viewer -->
-            <div id="post-content-wrapper" class="card w-100 thumbnail-post <%= 'like-active' if active_like?(@post) %> <%= 'bookmark-active' if active_bookmark?(@post) %>" data-id="<%= @post.id %>" data-user_id="<%= user_signed_in? ? current_user.id : 0 %>">
+            <div id="post-content-wrapper"
+                 class="card w-100 thumbnail-post <%= 'like-active' if active_like?(@post) %> <%= 'bookmark-active' if active_bookmark?(@post) %>  <%= 'subscribe-active' if active_subscribe?(@post) %>"
+                 data-id="<%= @post.id %>"
+                 data-user_id="<%= user_signed_in? ? current_user.id : 0 %>"
+                 data-author_id="<%= @post.author.id %>">
 
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe src="<%= video_url %>"
@@ -48,15 +52,15 @@
 
                 <div id="post-user-body" class="card-body card-padding w-100 p-t-5 p-b-10">
                     <div class="m-b-0 w-100 p-t-10">
-                        <a id="post-user-profile" href="<%= user_path(@post.user) %>">
-                            <div class="user-profile_img" style="background-image: url('<%= @post.user.profile_img %>')"></div>
+                        <a id="post-user-profile" href="<%= user_path(@post.author) %>">
+                            <div class="user-profile_img" style="background-image: url('<%= @post.author.profile_img %>')"></div>
                             <ul>
-                                <li>@<%= @post.user.name %></li>
+                                <li>@<%= @post.author.name %></li>
                                 <li>20명 구독중</li>
                             </ul>
                         </a>
                         <div id="subscribe-btn">
-                            <a href="" class="btn btn-default btn-link">구독하기</a>
+                            <a href="" class="btn btn-default btn-link follow-btn">구독하기</a>
                         </div>
                     </div>
                 </div>

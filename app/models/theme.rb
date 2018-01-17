@@ -4,6 +4,7 @@ class Theme < ApplicationRecord
     has_many :posts
 
     def self.populars
-        last(4)
+        records = self.order(created_at: :desc)
+        self.filter(records, 'posts', 5)
     end
 end

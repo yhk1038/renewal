@@ -5,7 +5,8 @@ $server_host = $app.config.env === 'development' ? 'http://localhost:'+$server_p
 $router = {
     view_count: function (action, id) { return restful_balancor('view_counts', action, id) },
     like:       function (action, id) { return restful_balancor('likes', action, id) },
-    bookmark:   function (action, id) { return restful_balancor('bookmarks', action, id) }
+    bookmark:   function (action, id) { return restful_balancor('bookmarks', action, id) },
+    subscribe:  function (action, id) { return restful_balancor('subscribes', action, id) }
 };
 
 
@@ -16,6 +17,7 @@ function request(resource, action, id, data) {
     if (resource === 'view_count')      {rest = $router.view_count(action, id);}
     else if (resource === 'like')       {rest = $router.like(action, id);}
     else if (resource === 'bookmark')   {rest = $router.bookmark(action, id);}
+    else if (resource === 'subscribe')  {rest = $router.subscribe(action, id);}
 
     var structure = {};
     structure.authenticity_token = _form_auth_;

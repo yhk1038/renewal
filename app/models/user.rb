@@ -13,6 +13,25 @@ class User < ApplicationRecord
     has_many :bookmarks
     has_many :view_counts
 
+    has_many :subscribes
+    has_many :targets, through: :subscribes
+
+    def title
+        ['@', self.name].join
+    end
+
+    def followings
+        targets.count.zero? ? nil : targets
+    end
+
+    def followers
+        Subscribe.where(target_id: self.id)
+    end
+
+    def is_subscribed?(current_user)
+        self.followers.find_by(user: current_user)
+    end
+
     def is_valid?
         self.name &&
             self.email &&

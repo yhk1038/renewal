@@ -7,6 +7,7 @@ end
 
 gem 'sweetalert2'
 gem 'rails-sweetalert2-confirm'
+gem 'week_of_month'
 
 gem 'faraday'
 gem 'rest-client'
