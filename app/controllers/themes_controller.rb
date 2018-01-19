@@ -13,8 +13,21 @@ class ThemesController < ApplicationController
     # GET /themes/1
     # GET /themes/1.json
     def show
-        @layout_carousel_display = false
-        @navbar_transparent = false
+        set_layout [false, false, true]
+        @carousels = [
+            {
+                id: 1,
+                about:      ['', @theme.theme_group.title],
+                background_img: @theme.background_img ? @theme.background_img : @theme.posts.last.thumbnail_img,
+                href: 'javascript:;',
+                title: @theme.title,
+                subtitle:   ['', '김상윤 신송중학교 2년'],
+                produce:    ['제작 : ', "#{@theme.user.name} 외 1명", ' <br>'],
+                when:       ['시간 : ', @theme.updated_at.strftime('%Y. %m. %d.')],
+                where:      [' , 장소 : ', '서울시 세바시 강연장']
+            }
+        ]
+        @prev, @next = @theme.prev, @theme.next
     end
 
     # GET /themes/new

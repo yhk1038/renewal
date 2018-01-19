@@ -17,6 +17,7 @@ class PostsController < ApplicationController
     # GET /posts/new
     def new
         @post = Post.new
+        set_layout [false, false, false]
     end
 
     # GET /posts/1/edit

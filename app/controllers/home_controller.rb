@@ -24,6 +24,41 @@ class HomeController < ApplicationController
                             label: false
                         })
         @sections = [my_channels, hot_themes, hot_channels, recommend_themes].compact
+        @carousels = [
+            {
+                id: 1,
+                about:      ['', '다가오는 명강연'],
+                background_img: 'https://i.ytimg.com/vi/Ki6VYGnUBWU/maxresdefault.jpg',
+                href: 'https://www.youtube.com/watch?v=Ki6VYGnUBWU',
+                title: '[세바시 청소년] 우린 열대어입니다',
+                subtitle:   ['', '김상윤 신송중학교 2년'],
+                produce:    ['제작 : ', '세바시스쿨, 세바시', ' <br>'],
+                when:       ['시간 : ', '2018. 2. 3.'],
+                where:      [' , 장소 : ', '서울시 세바시 강연장']
+            },
+            {
+                id: 2,
+                about:      ['', '다가오는 명강연'],
+                background_img: 'http://mblogthumb1.phinf.naver.net/MjAxNzA0MjZfMTQ5/MDAxNDkzMTY4MzUzMTU3.lEMZlKTvgwydkKj3sy1XuNgSmOJla2YEsKUEFAfiJYUg.Wt3_Ss87iX_1azD2_O2uOgoJh1mrnv6-cQ5sAIci6bkg.PNG.cjenm0901/%EC%96%B4%EC%A9%8C%EB%8B%A4%EC%96%B4%EB%A5%B8_1.png?type=w2',
+                href: 'https://www.youtube.com/watch?v=Ki6VYGnUBWU',
+                title: '[세바시 청소년] 우린 열대어입니다',
+                subtitle:   ['', '김상윤 신송중학교 2년'],
+                produce:    ['제작 : ', '세바시스쿨, 세바시', ' <br>'],
+                when:       ['시간 : ', '2018. 2. 3.'],
+                where:      [' , 장소 : ', '서울시 세바시 강연장']
+            },
+            {
+                id: 3,
+                about:      ['', '다가오는 명강연'],
+                background_img: 'http://via.placeholder.com/1450x570',
+                href: 'https://www.youtube.com/watch?v=Ki6VYGnUBWU',
+                title: '[세바시 청소년] 우린 열대어입니다',
+                subtitle:   ['', '김상윤 신송중학교 2년'],
+                produce:    ['제작 : ', '세바시스쿨, 세바시', ' <br>'],
+                when:       ['시간 : ', '2018. 2. 3.'],
+                where:      [' , 장소 : ', '서울시 세바시 강연장']
+            }
+        ]
     end
 
     def section_data(args={})

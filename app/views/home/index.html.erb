@@ -12,7 +12,7 @@
         <% posts = track.posts.last(20).reverse %>
         <div class="container theme-container w-100 p-b-15">
             <% if section[:label] %>
-                <div class="block-header p-lr-20">
+                <div class="block-header p-lr-20 href" data-href="<%= if track.class.to_s == 'Theme' then theme_path(track) elsif track.class.to_s == 'User' then user_path(track) end %>">
                     <h2><%= track.title %> (<%= posts.count %>)</h2>
                 </div>
             <% end %>

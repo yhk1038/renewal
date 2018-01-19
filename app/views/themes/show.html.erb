@@ -1,19 +1,42 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @theme.title %>
-</p>
+<div class="container theme-detail">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="posts-wrapper wide">
+                        <%= render partial: '/posts/partials/post_card_template', collection: @theme.posts, as: :post %>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
 
-<p>
-  <strong>Background img:</strong>
-  <%= @theme.background_img %>
-</p>
+<div class="container w-100 p-b-0">
+    <div class="row">
 
-<p>
-  <strong>Thumbnail img:</strong>
-  <%= @theme.thumbnail_img %>
-</p>
+        <% if @prev %>
+            <div class="bgm-gray <%= @next ? 'col-sm-6 text-left' : 'col-sm-12' %>" style="cursor: pointer;">
+                <div class="href p-30 text-center c-white" data-href="<%= theme_path(@prev) %>">
+                    <p class="f-16"><span class="zmdi zmdi-long-arrow-left"></span> 이전 테마 보러가기</p>
+                    <p class="f-20 f-700"><%= @prev.title %></p>
+                </div>
+            </div>
+        <% end %>
 
-<%= link_to 'Edit', edit_theme_path(@theme) %> |
-<%= link_to 'Back', themes_path %>
+        <% if @next %>
+            <div class="bgm-bluegray <%= @prev ? 'col-sm-6 text-right' : 'col-sm-12' %>" style="cursor: pointer;">
+                <div class="href p-30 text-center c-white" data-href="<%= theme_path(@next) %>">
+                    <p class="f-16">다음 테마 보러가기 <span class="zmdi zmdi-long-arrow-right"></span></p>
+                    <p class="f-20 f-700"><%= @next.title %></p>
+                </div>
+            </div>
+        <% end %>
+
+    </div>
+</div>
