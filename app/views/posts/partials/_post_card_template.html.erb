@@ -1,17 +1,17 @@
 
 <div data-src="https://www.youtube.com/watch?v=bZrrGF2MHIs" class="p-lr-5 p-relative">
     <div class="thumbnail thumbnail-post lightbox-item p-0 z-depth-1-bottom <%= 'bookmark-active' if active_bookmark? post %>" data-id="<%= post.id %>" data-user_id="<%= user_signed_in? ? current_user.id : 0 %>">
-        <img src="<%= post.thumbnail_img %>" alt="">
-        <div class="tbn-img" style="background-image: url('<%= post.thumbnail_img %>')"></div>
+        <img src="<%= post.id ? post.thumbnail_img : '/template/img/headers/1.png' %>" alt="">
+        <div class="tbn-img" style="background-image: url('<%= post.id ? post.thumbnail_img : '/template/img/headers/1.png' %>')"></div>
         <span class="bookmark-btn zmdi zmdi-star-outline"></span>
-        <span class="runtime-badge"><%= post.runtime %></span>
-        <div class="caption p-b-0 href" data-href="<%= post_path(post) %>">
-            <h4><%= post.title %></h4>
-            <p class="post-info-line1 m-b-5"><span>방금 전 |</span> <%= post.user.name %></p>
+        <span class="runtime-badge"><%= post.id ? post.runtime : '00:00' %></span>
+        <div class="caption p-b-0 href" data-href="<%= post.id ? post_path(post) : '#' %>">
+            <h4><%= post.id ? post.title : '제목을 입력해주세요' %></h4>
+            <p class="post-info-line1 m-b-5"><span>방금 전 |</span> <%= post.id ? post.user.name : current_user.name %></p>
             <p class="post-info-line2 m-b-0">
-                <span class="zmdi zmdi-caret-right-circle"> 999K </span>
-                <span class="zmdi zmdi-favorite-outline"> 999K </span>
-                <span class="zmdi zmdi-star-outline"> 999K </span>
+                <span class="zmdi zmdi-caret-right-circle"> <%= post.id ? post.view_counts.count : '999K' %> </span>
+                <span class="zmdi zmdi-favorite-outline"> <%= post.id ? post.likes.count : '999K' %> </span>
+                <span class="zmdi zmdi-star-outline"> <%= post.id ? post.bookmarks.count : '999K' %> </span>
             </p>
         </div>
     </div>

@@ -1,23 +1,34 @@
 $(document).ready(function () {
-    $('.bookmark-btn').click(function (e) {
+    /*
+     *      Post action : bookmark, like, follow
+     */
+    var posts_wrapper   = $('.posts-wrapper:not(.preview)');
+    var bookmark_btn    = posts_wrapper.find('.bookmark-btn');
+    var like_btn        = posts_wrapper.find('.like-btn');
+    var follow_btn      = posts_wrapper.find('.follow-btn');
+
+    bookmark_btn.click(function (e) {
         toggle_action(this, 'bookmark', 'star', 'amber');
         e.stopPropagation();
         return false;
     });
 
-    $('.like-btn').click(function (e) {
+    like_btn.click(function (e) {
         toggle_action(this, 'like', 'favorite', 'red');
         e.stopPropagation();
         return false;
     });
 
-    $('.follow-btn').click(function (e) {
+    follow_btn.click(function (e) {
         toggle_action(this, 'subscribe', 0, 0);
         e.stopPropagation();
         return false;
     });
 
 
+    /*
+     *      댓글 펼쳐 보기
+     */
     $('#comment_omit_btn').click(function (e) {
         var scroll = $(document).scrollTop();
         $(this).toggle();
@@ -27,6 +38,27 @@ $(document).ready(function () {
         return false;
     });
 
+
+    /*
+     *      _form active preview
+     */
+    var form    = $('.post-container').find('form');
+    var runtime = $('#post_runtime');
+    var title   = $('#post_title');
+
+    var preview_wrapper = $('.posts-wrapper.preview');
+    var runtime_preview = preview_wrapper.find('.runtime-badge');
+    var title_preview   = preview_wrapper.find('.caption').find('h4');
+
+    runtime.keyup(function (e) {
+        var value = $(this).val();
+        runtime_preview.text(value);
+    });
+
+    title.keyup(function (e) {
+        var value = $(this).val();
+        title_preview.text(value);
+    });
 });
 
 

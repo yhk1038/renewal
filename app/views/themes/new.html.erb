@@ -1,5 +1,3 @@
-<h1>New Theme</h1>
 
-<%= render 'form', theme: @theme %>
+<%= render partial: 'form', theme: @theme, layout: 'form_layout', locals: {identity: 'New Theme'} %>
 
-<%= link_to 'Back', themes_path %>

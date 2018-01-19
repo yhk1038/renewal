@@ -1,0 +1,43 @@
+<div class="container post-container w-100 p-b-15">
+    <div class="row p-lr-50">
+
+        <div class="col-sm-4 col-sm-push-8">
+            <div class="card">
+                <form action="<%= @post.id ? post_path(@post) : posts_path %>" class="form-horizontal" method="post">
+                    <div class="card-header bgm-red">
+                        <h2>
+                            <%= identity %> Setting
+                        </h2>
+                        <%= link_to '목록으로', posts_path, class: 'btn btn-float bgm-white c-black', style: 'width: auto; bottom: 10px; border-radius: 0; height: initial; line-height: 30px !important' %>
+                    </div>
+                    <div class="card-body card-padding">
+                        <%= yield %>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-8 col-sm-pull-4">
+            <div class="card">
+                <div class="card-header bgm-red">
+                    <h2>
+                        Preview
+                    </h2>
+                </div>
+                <div class="card-body card-padding">
+                    <h3 class="preview-label">Card (default)</h3>
+                    <div class="posts-wrapper preview" style="max-width: 250px;">
+                        <%= render partial: '/posts/partials/post_card_template', locals: {post: @post} %>
+                    </div>
+
+                    <br>
+
+                    <h3 class="preview-label">Card (wide)</h3>
+                    <div class="posts-wrapper wide preview" style="max-width: 450px;">
+                        <%= render partial: '/posts/partials/post_card_template', locals: {post: @post} %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

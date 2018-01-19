@@ -1,13 +1,12 @@
 class ThemesController < ApplicationController
     before_action :set_theme, only: [:show, :edit, :update, :destroy]
     before_action :set_layout_variables
+    before_action only: [:new, :edit, :create, :update] { set_layout [false, false, false] }
 
     # GET /themes
     # GET /themes.json
     def index
-        @layout_carousel_display = false
-        @navbar_transparent = false
-        @theme_groups = ThemeGroup.all
+        set_layout [false, false, ThemeGroup.all]
     end
 
     # GET /themes/1
@@ -16,18 +15,21 @@ class ThemesController < ApplicationController
         set_layout [false, false, true]
         @carousels = [
             {
-                id: 1,
-                about:      ['', @theme.theme_group.title],
-                background_img: @theme.background_img ? @theme.background_img : @theme.posts.last.thumbnail_img,
+                id: @theme.id ? @theme.id : 0,
+                about:      ['', (@theme&.theme_group&.title || 'about of theme')],
+                background_img: @theme.background_img ? @theme.background_img : (@theme.id ? @theme&.posts&.last&.thumbnail_img : '/template/img/headers/1.png'),
                 href: 'javascript:;',
-                title: @theme.title,
+                title: @theme.id ? @theme.title : 'title of theme',
                 subtitle:   ['', '김상윤 신송중학교 2년'],
-                produce:    ['제작 : ', "#{@theme.user.name} 외 1명", ' <br>'],
-                when:       ['시간 : ', @theme.updated_at.strftime('%Y. %m. %d.')],
+                produce:    ['제작 : ', (@theme.id ? "#{@theme.user.name} 외 1명" : "#{current_user.name}"), ' <br>'],
+                when:       ['시간 : ', (@theme.id ? @theme.updated_at.strftime('%Y. %m. %d.') : Time.zone.now.strftime('%Y. %m. %d.'))],
                 where:      [' , 장소 : ', '서울시 세바시 강연장']
             }
         ]
-        @prev, @next = @theme.prev, @theme.next
+        @prev, @next = nil, nil
+        if @theme.id
+            @prev, @next = @theme.prev, @theme.next
+        end
     end
 
     # GET /themes/new
@@ -82,11 +84,11 @@ class ThemesController < ApplicationController
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_theme
-        @theme = Theme.find(params[:id])
+        @theme = params[:id].to_i.zero? ? Theme.new : Theme.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_params
-        params.require(:theme).permit(:title, :background_img, :thumbnail_img)
+        params.require(:theme).permit(:title, :background_img, :thumbnail_img, :user_id, :theme_group_id)
     end
 end

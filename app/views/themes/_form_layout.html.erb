@@ -1,0 +1,61 @@
+<div class="container theme-container w-100 p-b-15">
+    <div class="row p-lr-50">
+
+        <div class="col-sm-4 col-sm-push-8">
+            <div class="card">
+                <form action="<%= @theme.id ? theme_path(@theme) : themes_path %>" class="form-horizontal" method="post">
+                    <div class="card-header bgm-indigo">
+                        <h2>
+                            <%= identity %> Setting
+                        </h2>
+                        <%= link_to '목록으로', themes_path, class: 'btn btn-float bgm-white c-black', style: 'width: auto; bottom: 10px; border-radius: 0; height: initial; line-height: 30px !important' %>
+                    </div>
+                    <div class="card-body card-padding">
+                        <%= yield %>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="col-sm-8 col-sm-pull-4">
+            <div class="card">
+                <div class="card-header bgm-indigo">
+                    <h2>
+                        Preview
+                    </h2>
+                </div>
+                <div class="card-body card-padding">
+                    <h3 class="preview-label">Header (default)</h3>
+                    <div class="themes-wrapper preview">
+                        <div class="frame-mask"></div>
+                        <iframe src="<%= @theme.id ? theme_path(@theme) : theme_path(0) %>"
+                                frameborder="0"
+                                scrolling="no">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .themes-wrapper{
+        position: relative;
+    }
+    .themes-wrapper > iframe{
+        width: 100%;
+        height: 500px;
+        border: 1px solid;
+    }
+    .themes-wrapper > .frame-mask{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 500px;
+        left: 0;
+        top: 0;
+    }
+</style>

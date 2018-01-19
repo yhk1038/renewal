@@ -1,5 +1,2 @@
-<h1>New Post</h1>
 
-<%= render 'form', post: @post %>
-
-<%= link_to 'Back', posts_path %>
+<%= render partial: 'form', post: @post, layout: 'form_layout', locals: {identity: 'New Post'} %>

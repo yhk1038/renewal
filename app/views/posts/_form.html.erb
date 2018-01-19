@@ -1,11 +1,21 @@
+
 <%= simple_form_for(@post) do |f| %>
-  <%= f.error_notification %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.association :user %>
-  </div>
+    <% grid     = {left: 'col-sm-4', right: 'col-sm-8'} %>
+    <% offset   = {left: 'col-sm-offset-4', right: 'col-sm-8'} %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <%= grid_input 'crawler', @post, :crawling_target, {options: {label_text: '페이지 주소', grid: grid}, class: {btn: 'btn btn-default bgm-cyan', grid: 'text-right'}} %>
+    <div id="post_crawling_target_after" style="display: none;">
+        <%= grid_input 'text',   @post, :content_type,  options: {label_text: '타입(고정)',       grid: grid, required: true, disabled: true, value: 'video'} %>
+        <%= grid_input 'text',   @post, :runtime,       options: {label_text: '재생시간',         grid: grid, required: true, placeholder: '00:00'} %>
+        <%= grid_input 'text',   @post, :title,         options: {label_text: '<b>제목</b>',     grid: grid, required: true } %>
+        <%= grid_input 'text',   @post, :thumbnail_img, options: {label_text: '썸네일 이미지 Url', grid: grid, required: true } %>
+    </div>
+
+    <%= grid_input 'select', @post, :user_id,       options: {label_text: '작성자(나)',       grid: grid, required: true, disabled: true, value: current_user.id} %>
+    <%= grid_input 'select', @post, :theme_id,      options: {label_text: '테마',            grid: grid, required: true } %>
+
+    <%= grid_submit '저장', {grid: offset, class: {btn: 'btn btn-default bgm-red', grid: 'text-right'}} %>
+
 <% end %>

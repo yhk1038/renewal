@@ -22,6 +22,7 @@ class PostsController < ApplicationController
 
     # GET /posts/1/edit
     def edit
+        set_layout [false, false, false]
     end
 
     # POST /posts
