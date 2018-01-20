@@ -32,18 +32,23 @@ function crawler_request(url) {
         var preview_dom = $('.posts-wrapper.preview');
 
         if (provider === 'youtube'){
-            var title = info.title,
-                image = info.image,
-                video_url = info.video_secure_url;
+            var title       = info.title,
+                image       = info.image,
+                video_url   = info.video_secure_url;
 
         } else if (provider === 'facebook'){
-            var title = info.title,
-                image = info.image,
-                video_url = info.url;
+            var title       = info.title,
+                image       = info.image,
+                video_url   = info.url;
         } else if (provider === 'naver'){
-            var title = info.title,
-                image = info.image,
-                video_url = info.video_url;
+            var title       = info.title,
+                image       = info.image,
+                video_url   = info.video_url,
+                playtime    = info.video_play_time;
+
+            var runtime = parse_sec(playtime, null);
+            $('#post_runtime').val(runtime);
+            preview_dom.find('.runtime-badge').text(runtime);
         }
 
         // form inputs

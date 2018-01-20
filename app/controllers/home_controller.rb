@@ -93,22 +93,18 @@ class HomeController < ApplicationController
 
         case provider
         when 'youtube'
-            # parse meta tag (:title, :image, :video_url)
-            # parse info (:runtime)
-            white_list  = %w(title image description video:secure_url video:tag).map{|e| 'og:'+e}
-
+            white_list  = %w(title image description video:secure_url).map{|e| 'og:'+e}
             white_list.each do |property|
                 key = property.gsub('og:','').gsub(':','_')
+                puts key
                 eval("hash['#{key}'.to_sym] = metas.css('meta[property=\"#{property}\"]')[0]['content']")
             end
 
         when 'facebook'
-            # parse meta tag (:title, :image, :video_url)
-            # parse info (:runtime)
             white_list = %w(title image description url).map{|e| 'og:'+e}
-
             white_list.each do |property|
                 key = property.gsub('og:','').gsub(':','_')
+                puts key
                 eval("hash['#{key}'.to_sym] = metas.css('meta[property=\"#{property}\"]')[0]['content']")
             end
             if hash[:url].split('/')[3] != 'plugins'
@@ -116,11 +112,11 @@ class HomeController < ApplicationController
             end
 
         when 'naver'
-            white_list = %w(title image description video:url video:tag).map{|e| 'og:'+e}
-            # white_list << 'naver:video:play_time'
-
+            white_list = %w(title image description video:url).map{|e| 'og:'+e}
+            white_list << 'naver:video:play_time'
             white_list.each do |property|
                 key = property.gsub('og:','').gsub('naver:','').gsub(':','_')
+                puts key
                 eval("hash['#{key}'.to_sym] = metas.css('meta[property=\"#{property}\"]')[0]['content']")
             end
 

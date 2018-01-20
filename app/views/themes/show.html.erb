@@ -7,7 +7,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <div class="posts-wrapper wide">
-                        <%= render partial: '/posts/partials/post_card_template', collection: @theme.posts, as: :post %>
+                        <%= render partial: '/posts/partials/post_card_template', collection: @theme.posts.reverse, as: :post %>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
