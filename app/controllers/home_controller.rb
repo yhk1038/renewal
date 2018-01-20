@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class HomeController < ApplicationController
     before_action :set_layout_variables
 
@@ -69,5 +71,42 @@ class HomeController < ApplicationController
 
         return nil if tracks.nil?
         {title: title, tracks: tracks, method: method, label: label}
+    end
+
+
+    def crawler
+        target = params[:target]
+        provider    = target[:provider]
+        target_url  = target[:url]
+
+        case provider
+        when 'youtube'
+            # get html body
+            doc = Nokogiri::HTML(RestClient.get(target_url).body)
+            metas = doc.css('head meta')
+
+            # parse meta tag (:title, :image, :video_url)
+            # parse info (:runtime)
+            white_list  = %w(title image description video:secure_url video:tag).map{|e| 'og:'+e}
+
+            # title:        og:title
+            # image:        og:image
+            # description:  og:description
+            # video_url:    og:video:secure_url
+            # tags:         og:video:tag (many of)
+            # runtime:      og:video:          # !! can't parse !!
+            hash = {}
+            white_list.each do |property|
+                eval("hash['#{property.gsub('og:','').gsub(':','_')}'.to_sym] = metas.css('meta[property=\"#{property}\"]')[0]['content']")
+            end
+
+            render json: {provider: provider, detail: hash, status: 200 , message: 'ok'}
+
+        when 'facebook'
+            # get html body
+            # parse meta tag (:title, :image)
+            # parse info (:runtime, :video_url)
+
+        end
     end
 end

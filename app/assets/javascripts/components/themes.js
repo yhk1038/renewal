@@ -37,11 +37,13 @@ $(document).ready(function () {
         var title_preview = preview_dom.find('.carousel-info-title').find('a');
         title_preview.text(value);
     });
+
+    $()
 });
 
 
 function allow_disabled_data() {
-    var form    = $('.theme-container').find('form');
+    var form    = $('.container').find('form');
     var disables = form.find('.form-disabled');
     if (confirm('저장하시겠습니까?')){
         disables.removeAttr('disabled');

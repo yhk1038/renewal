@@ -11,6 +11,7 @@ gem 'week_of_month'
 
 gem 'faraday'
 gem 'rest-client'
+gem 'nokogiri'
 
 # 회원인증 및 권한설정을 위한 젬
 gem 'devise'     # 회원가입 및 인증

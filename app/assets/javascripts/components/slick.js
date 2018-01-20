@@ -12,6 +12,10 @@ $(document).ready(function () {
     //     }
     // });
 
+    compute_thumbnail();
+});
+
+function compute_thumbnail() {
     $.each($('.posts-wrapper:not(.wide) .thumbnail'), function (i, tbn) {
         var thumbnail = $(tbn);
         var h = thumbnail.find('img').height();
@@ -19,7 +23,7 @@ $(document).ready(function () {
         // console.log(top);
         thumbnail.find('.caption').css('top', top);
     });
-});
+}
 
 
 function exec_slick() {

@@ -90,7 +90,7 @@ module BootForm
             "\n"+
             "<div class=\"form-group #{fg_class}\">\n"+
             "   <div class=\"#{offset} #{grid[:right]} #{grid_class}\">\n"+
-            "       <button style=\"#{style}\" class=\"#{btn_class}\">#{value}</button>\n"+
+            "       <a style=\"#{style}\" class=\"crawlBtn #{btn_class}\">#{value}</a>\n"+
             "   </div>\n"+
             "</div>\n"
     end

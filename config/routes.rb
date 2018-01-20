@@ -7,7 +7,6 @@
 #
 Rails.application.routes.draw do
     root 'home#index'
-    get 'home/index'
 
     scope module: :action do
         resources :view_counts
@@ -29,5 +28,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :themes
 
+    get 'home/index'
+    post 'home/crawler'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

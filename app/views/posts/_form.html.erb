@@ -11,6 +11,7 @@
         <%= grid_input 'text',   @post, :runtime,       options: {label_text: '재생시간',         grid: grid, required: true, placeholder: '00:00'} %>
         <%= grid_input 'text',   @post, :title,         options: {label_text: '<b>제목</b>',     grid: grid, required: true } %>
         <%= grid_input 'text',   @post, :thumbnail_img, options: {label_text: '썸네일 이미지 Url', grid: grid, required: true } %>
+        <%= grid_input 'text',   @post, :video_url,     options: {label_text: '임베드 비디오 Url', grid: grid, required: true } %>
     </div>
 
     <%= grid_input 'select', @post, :user_id,       options: {label_text: '작성자(나)',       grid: grid, required: true, disabled: true, value: current_user.id} %>
