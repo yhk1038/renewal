@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     resources :posts
     resources :themes
+    resources :theme_groups
 
     get 'home/index'
     post 'home/crawler'
