@@ -37,7 +37,13 @@ function crawler_request(url) {
                 video_url = info.video_secure_url;
 
         } else if (provider === 'facebook'){
-
+            var title = info.title,
+                image = info.image,
+                video_url = info.url;
+        } else if (provider === 'naver'){
+            var title = info.title,
+                image = info.image,
+                video_url = info.video_url;
         }
 
         // form inputs
@@ -56,6 +62,7 @@ function crawler_request(url) {
 
         compute_thumbnail();
         $('#post_crawling_target_after').show();
+        compute_thumbnail();
     });
 }
 

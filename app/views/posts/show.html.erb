@@ -5,6 +5,7 @@
     # 3. facebook
 
     video_url = @post.video_url
+    'http://tv.naver.com/v/2548156/list/182663'
     video_url ||= 'http://serviceapi.rmcnmv.naver.com/flash/outKeyPlayer.nhn?vid=76E41BC7DFA2BC520751346FF3FB11FE605A&outKey=V122c28c1369a04541e5d1092798c96fc72b4b6a0cc41b7b6baff1092798c96fc72b4&controlBarMovable=true&jsCallable=true&isAutoPlay=true&skinName=tvcast_white'
     # video_url = 'http://www.youtube.com/embed/aaZXDm3RXuo'
     # video_url = 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Frealmudo%2Fvideos%2F698589283660718%2F&show_text=0&width=560'
@@ -18,7 +19,7 @@
 
             <!-- Viewer -->
             <div id="post-content-wrapper"
-                 class="card w-100 thumbnail-post <%= 'like-active' if active_like?(@post) %> <%= 'bookmark-active' if active_bookmark?(@post) %>  <%= 'subscribe-active' if active_subscribe?(@post) %>"
+                 class="card w-100 posts-wrapper thumbnail-post <%= 'like-active' if active_like?(@post) %> <%= 'bookmark-active' if active_bookmark?(@post) %>  <%= 'subscribe-active' if active_subscribe?(@post) %>"
                  data-id="<%= @post.id %>"
                  data-user_id="<%= user_signed_in? ? current_user.id : 0 %>"
                  data-author_id="<%= @post.author.id %>">

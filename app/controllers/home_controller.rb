@@ -79,34 +79,55 @@ class HomeController < ApplicationController
         provider    = target[:provider]
         target_url  = target[:url]
 
+        # get html body
+        doc = Nokogiri::HTML(RestClient.get(target_url).body)
+        metas = doc.css('head meta')
+        hash = {}
+
+        # title:        og:title
+        # image:        og:image
+        # description:  og:description
+        # video_url:    og:video:secure_url
+        # tags:         og:video:tag (many of)
+        # runtime:      og:video:          # !! can't parse !!
+
         case provider
         when 'youtube'
-            # get html body
-            doc = Nokogiri::HTML(RestClient.get(target_url).body)
-            metas = doc.css('head meta')
-
             # parse meta tag (:title, :image, :video_url)
             # parse info (:runtime)
             white_list  = %w(title image description video:secure_url video:tag).map{|e| 'og:'+e}
 
-            # title:        og:title
-            # image:        og:image
-            # description:  og:description
-            # video_url:    og:video:secure_url
-            # tags:         og:video:tag (many of)
-            # runtime:      og:video:          # !! can't parse !!
-            hash = {}
             white_list.each do |property|
-                eval("hash['#{property.gsub('og:','').gsub(':','_')}'.to_sym] = metas.css('meta[property=\"#{property}\"]')[0]['content']")
+                key = property.gsub('og:','').gsub(':','_')
+                eval("hash['#{key}'.to_sym] = metas.css('meta[property=\"#{property}\"]')[0]['content']")
             end
 
-            render json: {provider: provider, detail: hash, status: 200 , message: 'ok'}
-
         when 'facebook'
-            # get html body
-            # parse meta tag (:title, :image)
-            # parse info (:runtime, :video_url)
+            # parse meta tag (:title, :image, :video_url)
+            # parse info (:runtime)
+            white_list = %w(title image description url).map{|e| 'og:'+e}
 
+            white_list.each do |property|
+                key = property.gsub('og:','').gsub(':','_')
+                eval("hash['#{key}'.to_sym] = metas.css('meta[property=\"#{property}\"]')[0]['content']")
+            end
+            if hash[:url].split('/')[3] != 'plugins'
+                hash[:url] = Post.to_embed provider: 'facebook', url: hash[:url]
+            end
+
+        when 'naver'
+            white_list = %w(title image description video:url video:tag).map{|e| 'og:'+e}
+            # white_list << 'naver:video:play_time'
+
+            white_list.each do |property|
+                key = property.gsub('og:','').gsub('naver:','').gsub(':','_')
+                eval("hash['#{key}'.to_sym] = metas.css('meta[property=\"#{property}\"]')[0]['content']")
+            end
+
+        else
+            render json: {provider: 'no', detail: hash, status: 500 , message: 'fail'}
         end
+
+        render json: {provider: provider, detail: hash, status: 200 , message: 'ok'}
     end
 end
