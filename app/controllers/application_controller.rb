@@ -8,6 +8,15 @@ class ApplicationController < ActionController::Base
         true
     end
 
+    def valid_user res
+        unless user_signed_in? && current_user.id == res.user.id
+            respond_to do |format|
+                format.html {return redirect_back fallback_location: root_path }
+                format.json {return render json: res, status: :unprocessable_entity}
+            end
+        end
+    end
+
     def set_layout_variables
         # default variables setting
         @delivery_display           = true

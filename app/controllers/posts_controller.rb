@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action -> { valid_user @post }, except: [:index, :show, :new]
     before_action :set_layout_variables
+    before_action except: [:destroy] { set_layout [false, false, false] }
 
     # GET /posts
     # GET /posts.json
@@ -11,18 +13,17 @@ class PostsController < ApplicationController
     # GET /posts/1
     # GET /posts/1.json
     def show
-        set_layout [false, false, false]
+        @theme = @post.theme
+        @posts = @theme.posts.reverse - [@post]
     end
 
     # GET /posts/new
     def new
         @post = Post.new
-        set_layout [false, false, false]
     end
 
     # GET /posts/1/edit
     def edit
-        set_layout [false, false, false]
     end
 
     # POST /posts

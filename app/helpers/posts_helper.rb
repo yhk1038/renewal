@@ -11,4 +11,8 @@ module PostsHelper
     def active_subscribe? post
         user_signed_in? && post.user.is_subscribed?(current_user)
     end
+
+    def is_mine? post
+        user_signed_in? && post.user.id == current_user.id
+    end
 end

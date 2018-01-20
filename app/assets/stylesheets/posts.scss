@@ -209,7 +209,7 @@ body #searchModal{
         ul{
             li{
                 margin-left: 8px;
-                a{
+                a, button{
                     span{
                         color: #999;
                         border-radius: 100%;
@@ -361,10 +361,12 @@ body #searchModal{
         ul li{
             margin-left: 6px;
 
-            a span{
-                width: 34px;
-                line-height: 34px;
-                font-size: 20px;
+            a, button{
+                span{
+                    width: 34px;
+                    line-height: 34px;
+                    font-size: 20px;
+                }
             }
         }
     }

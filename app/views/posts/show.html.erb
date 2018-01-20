@@ -1,14 +1,7 @@
 
 <%
-    # 1. naver tv cast
-    # 2. youtube
-    # 3. facebook
-
     video_url = @post.video_url
-    'http://tv.naver.com/v/2548156/list/182663'
     video_url ||= 'http://serviceapi.rmcnmv.naver.com/flash/outKeyPlayer.nhn?vid=76E41BC7DFA2BC520751346FF3FB11FE605A&outKey=V122c28c1369a04541e5d1092798c96fc72b4b6a0cc41b7b6baff1092798c96fc72b4&controlBarMovable=true&jsCallable=true&isAutoPlay=true&skinName=tvcast_white'
-    # video_url = 'http://www.youtube.com/embed/aaZXDm3RXuo'
-    # video_url = 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Frealmudo%2Fvideos%2F698589283660718%2F&show_text=0&width=560'
 %>
 <div class="container post-container w-100 p-b-15">
     <div class="row p-lr-50">
@@ -36,7 +29,7 @@
                 </div>
 
                 <div id="post-info-body" class="card-body card-padding w-100">
-                    <h3 class="m-t-0"><%= @post.title %></h3>
+                    <h3 class="m-t-0 m-b-15"><%= @post.title %></h3>
                     <p class="info-line info-line-1 m-b-0">
                         <span class="zmdi zmdi-caret-right-circle"> 999K </span>
                         <span class="zmdi zmdi-favorite-outline"> 999K </span>
@@ -45,8 +38,21 @@
                     </p>
                     <div class="actionBox">
                         <ul class="row_ul">
-                            <li><a class="like-btn" href=""><span class="zmdi zmdi-favorite<%= active_like?(@post) ? ' c-red' : '-outline' %>"></span></a></li>
-                            <li><a class="bookmark-btn" href=""><span class="zmdi zmdi-star<%= active_bookmark?(@post) ? ' c-amber' : '-outline' %>"></span></a></li>
+                            <% if is_mine? @post %>
+                                <li>
+                                    <%= link_to edit_post_path(@post) do %>
+                                        <span class="zmdi zmdi-edit c-white bgm-lightblue"></span>
+                                    <% end %>
+                                </li>
+                                <li>
+                                    <%= button_to post_path(@post), class: 'p-lr-0 b-0 p-b-0', method: :delete, onclick: 'if(!confirm("정말 삭제할까요?")){return false}' do %>
+                                        <span class="zmdi zmdi-delete c-white bgm-pink"></span>
+                                    <% end %>
+                                </li>
+                            <% else %>
+                                <li><a class="like-btn" href=""><span class="zmdi zmdi-favorite<%= active_like?(@post) ? ' c-red' : '-outline' %>"></span></a></li>
+                                <li><a class="bookmark-btn" href=""><span class="zmdi zmdi-star<%= active_bookmark?(@post) ? ' c-amber' : '-outline' %>"></span></a></li>
+                            <% end %>
                             <li><a href=""><span class="zmdi zmdi-share"></span></a></li>
                         </ul>
                     </div>
@@ -85,9 +91,11 @@
 
             <hr>
 
+            <a href="<%= theme_path(@theme) %>" class="btn btn-default w-100 m-b-20">현재테마: <b><%= @theme.title %></b><br>(이 테마의 다른 영상 <%= @posts.count %>개)</a>
+
             <!-- Related Posts -->
             <div class="posts-wrapper wide">
-                <%= render partial: '/posts/partials/post_card_template', collection: @post.theme.posts.reverse - [@post], as: :post %>
+                <%= render partial: '/posts/partials/post_card_template', collection: @posts, as: :post %>
             </div>
         </div>
     </div>
