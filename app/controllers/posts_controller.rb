@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
+    before_action :is_login?, except: [:index, :show]
     before_action :set_post, only: [:show, :edit, :update, :destroy]
-    before_action -> { valid_user @post }, except: [:index, :show, :new, :create]
+    before_action -> { valid_user @post }, except: [:index, :show, :create, :edit]
     before_action :set_layout_variables
     before_action except: [:destroy] { set_layout [false, false, false] }
     after_action :increase_view_count, only: [:show]

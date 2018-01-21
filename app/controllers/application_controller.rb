@@ -4,11 +4,12 @@ class ApplicationController < ActionController::Base
     $appname = Rails.application.class.parent_name
 
     def is_login?
-        redirect_back(fallback_location: root_path) unless user_signed_in? || current_user.is_valid?
+        redirect_back(fallback_location: root_path) unless user_signed_in? && current_user.is_valid?
         true
     end
 
     def valid_user res
+        return true if res.nil? || res.id.nil?
         unless user_signed_in? && current_user.id == res.user.id
             respond_to do |format|
                 format.html {return redirect_back fallback_location: root_path }

@@ -31,9 +31,9 @@
                 <div id="post-info-body" class="card-body card-padding w-100">
                     <h3 class="m-t-0 m-b-15"><%= @post.title %></h3>
                     <p class="info-line info-line-1 m-b-0">
-                        <span class="zmdi zmdi-caret-right-circle"> 999K </span>
-                        <span class="zmdi zmdi-favorite-outline"> 999K </span>
-                        <span class="zmdi zmdi-star-outline"> 999K </span>
+                        <span class="zmdi zmdi-caret-right-circle"> <%= @post.view_count %> </span>
+                        <span class="zmdi zmdi-favorite-outline"> <%= @post.likes.count %> </span>
+                        <span class="zmdi zmdi-star-outline"> <%= @post.bookmarks.count %> </span>
                         | 3분 전
                     </p>
                     <div class="actionBox">

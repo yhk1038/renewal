@@ -1,12 +1,14 @@
 class ThemesController < ApplicationController
+    before_action :is_login?, except: [:index, :show]
     before_action :set_theme, only: [:show, :edit, :update, :destroy]
     before_action -> { valid_user @theme }, except: [:index, :show, :new, :create]
     before_action :set_layout_variables
-    before_action only: [:index, :new, :edit, :create, :update] { set_layout [false, false, false] }
+    before_action except: [:show, :destroy] { set_layout [false, false, false] }
 
     # GET /themes
     # GET /themes.json
     def index
+        @theme_groups = ThemeGroup.all
     end
 
     # GET /themes/1
