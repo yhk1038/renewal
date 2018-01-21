@@ -19,6 +19,7 @@
 
 /ignore
 /ignore/*
+/public/*.html
 /node_modules
 /yarn-error.log
 
