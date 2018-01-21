@@ -49,7 +49,6 @@ function allow_disabled_data() {
         disables.removeAttr('disabled');
         return true;
     } else {
-        alert('false');
         return false;
     }
 }

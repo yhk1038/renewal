@@ -9,7 +9,7 @@
             <h4><%= post.id ? post.title : '제목을 입력해주세요' %></h4>
             <p class="post-info-line1 m-b-5"><span>방금 전 |</span> <%= post.id ? post.user.name : current_user.name %></p>
             <p class="post-info-line2 m-b-0">
-                <span class="zmdi zmdi-caret-right-circle"> <%= post.id ? post.view_counts.count : '999K' %> </span>
+                <span class="zmdi zmdi-caret-right-circle"> <%= post.id ? post.view_count : '999K' %> </span>
                 <span class="zmdi zmdi-favorite-outline"> <%= post.id ? post.likes.count : '999K' %> </span>
                 <span class="zmdi zmdi-star-outline"> <%= post.id ? post.bookmarks.count : '999K' %> </span>
             </p>

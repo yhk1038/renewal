@@ -16,6 +16,10 @@ class Post < ApplicationRecord
         self.user
     end
 
+    def view_count
+        self.view_counts.count
+    end
+
     def self.sort_of(method)
         case method
         when 'new'

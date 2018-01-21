@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
-    before_action -> { valid_user @post }, except: [:index, :show, :new]
+    before_action -> { valid_user @post }, except: [:index, :show, :new, :create]
     before_action :set_layout_variables
     before_action except: [:destroy] { set_layout [false, false, false] }
+    after_action :increase_view_count, only: [:show]
 
     # GET /posts
     # GET /posts.json
@@ -75,5 +76,11 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
         params.require(:post).permit(:content_type, :runtime, :title, :thumbnail_img, :video_url, :user_id, :theme_id)
+    end
+
+    def increase_view_count
+        if user_signed_in?
+            ViewCount.create(post: @post, user: current_user)
+        end
     end
 end
